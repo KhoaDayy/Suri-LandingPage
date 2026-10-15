@@ -78,6 +78,7 @@ export default {
         'bubble-rise': 'bubbleRise 5s ease-in-out infinite',
         'jiggle': 'jiggle 0.6s ease-in-out',
         'fade-in': 'fadeIn 0.4s ease-out forwards',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         floatSoft: {

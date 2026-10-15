@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
 
 const SECTIONS = [
-  { id: 'motifs', label: 'THỰC ĐƠN' },
-  { id: 'story', label: 'TRUYỆN KỂ' },
-  { id: 'timeline', label: 'NHẬT KÝ' },
-  { id: 'gallery', label: 'ALBUM ẢNH' },
-  { id: 'archive', label: 'SỔ TAY MẬT' },
+  { id: 'motifs', label: 'BENTO MENU' },
+  { id: 'story', label: 'STORYBOOK' },
+  { id: 'timeline', label: 'ROADMAP' },
+  { id: 'gallery', label: 'BENTO ART' },
+  { id: 'archive', label: 'HỒ SƠ MẬT' },
   { id: 'music', label: 'JUKEBOX' },
 ];
 

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Calendar, CheckCircle2, Bookmark } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Calendar, CheckCircle2, Bookmark, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { TIMELINE_DATA, MilestoneItem } from '../data/suriData';
 
 export const EvolutionTimeline: React.FC = () => {
   const [filter, setFilter] = useState<string>('ALL');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredItems = TIMELINE_DATA.filter((item) => {
     if (filter === 'ALL') return true;
@@ -31,29 +32,61 @@ export const EvolutionTimeline: React.FC = () => {
     }
   };
 
+  const handleScrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -360, behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 360, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="timeline" className="relative min-h-screen py-24 bg-[#F5ECE0]/60 border-t border-taro-200/60 overflow-hidden">
+    <section id="timeline" className="relative py-28 bg-[#F6EFE5]/60 border-t border-taro-200/60 overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute top-1/2 left-10 w-[600px] h-[600px] bg-taro-200/30 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-berry-200/20 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center space-y-3 mb-14">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-taro-200 text-taro-700 font-display text-xs font-bold tracking-wider uppercase shadow-xs">
-            <Bookmark className="w-3.5 h-3.5 text-berry-500" />
-            <span>03 // BẢNG TIN QUÁN CAFE // CAFE MEMORY BULLETIN</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+          <div className="text-center md:text-left space-y-2">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-taro-200 text-taro-700 font-display text-xs font-bold tracking-wider uppercase shadow-xs">
+              <Bookmark className="w-3.5 h-3.5 text-berry-500" />
+              <span>03 // BĂNG CHUYỀN THỜI GIAN // HORIZONTAL MEMORY ROADMAP</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-kawaii font-extrabold tracking-tight text-chocolate-900 drop-shadow-xs">
+              MEMORY <span className="text-berry-500">ROADMAP</span>
+            </h2>
+            <p className="font-sans text-sm text-chocolate-600 max-w-xl">
+              Trượt ngang để khám phá các trạm dừng chân lịch sử từ những ngày đầu debut 2021 đến cột mốc hơn 51,400+ thành viên hiện tại.
+            </p>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-kawaii font-extrabold tracking-tight text-chocolate-900 drop-shadow-xs">
-            CAFE BULLETIN & <span className="text-berry-500">MEMORIES</span>
-          </h2>
-          <p className="font-display text-xs sm:text-sm font-bold tracking-widest text-chocolate-500 max-w-xl mx-auto uppercase">
-            LƯU GIỮ TỪNG KỶ NIỆM NGỌT NGÀO TỪ NGÀY MỞ CỬA ĐẾN HÔM NAY
-          </p>
+
+          {/* Horizontal Slider Controls */}
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={handleScrollLeft}
+              className="p-3 rounded-2xl bg-white hover:bg-cream-100 border border-taro-200 text-chocolate-700 hover:text-berry-600 shadow-sm transition bubble-btn"
+              title="Cuộn sang trái"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={handleScrollRight}
+              className="p-3 rounded-2xl bg-white hover:bg-cream-100 border border-taro-200 text-chocolate-700 hover:text-berry-600 shadow-sm transition bubble-btn"
+              title="Cuộn sang phải"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Filter Bar */}
-        <div className="flex flex-wrap justify-center gap-2.5 mb-14">
+        <div className="flex flex-wrap gap-2.5 mb-10">
           {[
             { id: 'ALL', label: 'TẤT CẢ KỶ NIỆM 🍮' },
             { id: 'MODEL', label: 'TẠO HÌNH (MODELS) 🎀' },
@@ -75,59 +108,65 @@ export const EvolutionTimeline: React.FC = () => {
           ))}
         </div>
 
-        {/* Vertical Bulletin Board */}
-        <div className="relative border-l-2 border-taro-300 ml-4 md:ml-1/2 md:-translate-x-1/2 space-y-10 pl-6 md:pl-0">
-          {filteredItems.map((item, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div
-                key={item.title + item.date}
-                className={`relative flex flex-col md:flex-row items-center ${
-                  isEven ? 'md:flex-row-reverse' : ''
-                } group`}
-              >
-                {/* Cute Central Pin Marker */}
-                <div className="absolute -left-[30px] md:left-1/2 md:-translate-x-1/2 w-7 h-7 rounded-full bg-white border-2 border-berry-400 shadow-sm z-20 flex items-center justify-center text-xs group-hover:scale-125 transition-transform select-none">
-                  {item.stickerEmoji}
-                </div>
-
-                {/* Card Container */}
-                <div className={`w-full md:w-[46%] ${isEven ? 'md:pr-10' : 'md:pl-10'}`}>
-                  <div className="cafe-card cafe-card-hover rounded-4xl p-6 border-2 border-taro-200/70 shadow-cafe space-y-3 relative overflow-hidden">
-                    {/* Washi Tape Accent */}
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 tape-sticker rounded-md rotate-[-2deg] pointer-events-none" />
-
-                    {/* Header Row */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-taro-100 pb-2.5 pt-1">
-                      <div className="flex items-center space-x-1.5 text-xs font-display font-bold text-chocolate-500">
-                        <Calendar size={13} className="text-berry-500" />
-                        <span>{item.date}</span>
-                      </div>
-                      <span className={`text-[10px] font-display font-bold tracking-wider px-2.5 py-0.5 rounded-full border uppercase ${getCategoryBadgeStyle(item.category)}`}>
-                        {item.badge}
-                      </span>
-                    </div>
-
-                    {/* Milestone Title */}
-                    <h3 className="text-lg sm:text-xl font-kawaii font-bold text-chocolate-900 group-hover:text-taro-600 transition-colors">
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="font-story text-sm text-chocolate-700 leading-relaxed">
-                      {item.description}
-                    </p>
-
-                    {/* Source Citation */}
-                    <div className="pt-2 flex items-center space-x-1.5 text-[11px] font-display font-semibold text-taro-600 border-t border-taro-100">
-                      <CheckCircle2 size={12} className="text-mint-500 shrink-0" />
-                      <span className="truncate">{item.sourceNote}</span>
-                    </div>
-                  </div>
-                </div>
+        {/* Horizontal Scrollable Track */}
+        <div
+          ref={scrollContainerRef}
+          className="flex space-x-6 overflow-x-auto pb-8 pt-4 px-2 no-scrollbar scroll-smooth"
+          style={{ scrollSnapType: 'x mandatory' }}
+        >
+          {filteredItems.map((item, index) => (
+            <div
+              key={item.title + item.date}
+              className="flex-shrink-0 w-[300px] sm:w-[340px] cafe-card rounded-4xl p-6 border-2 border-taro-200/80 shadow-cafe space-y-4 flex flex-col justify-between group hover:border-taro-400 transition-all duration-300 relative"
+              style={{ scrollSnapAlign: 'start' }}
+            >
+              {/* Cute Washi Tape on top */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-0.5 tape-sticker rounded-md text-[10px] font-mono font-bold text-chocolate-600 uppercase">
+                TRẠM KÝ ỨC #{String(index + 1).padStart(2, '0')}
               </div>
-            );
-          })}
+
+              <div className="space-y-3 pt-2">
+                {/* Header with Emoji Pin & Date */}
+                <div className="flex items-center justify-between border-b border-taro-100 pb-2.5">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-8 h-8 rounded-full bg-cream-100 border border-taro-200 flex items-center justify-center text-sm shadow-xs group-hover:scale-110 transition-transform">
+                      {item.stickerEmoji}
+                    </span>
+                    <span className="text-xs font-mono font-bold text-chocolate-500 flex items-center space-x-1">
+                      <Calendar size={12} className="text-berry-500" />
+                      <span>{item.date}</span>
+                    </span>
+                  </div>
+
+                  <span className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border uppercase ${getCategoryBadgeStyle(item.category)}`}>
+                    {item.badge}
+                  </span>
+                </div>
+
+                {/* Milestone Title */}
+                <h3 className="text-lg font-kawaii font-extrabold text-chocolate-900 group-hover:text-taro-700 transition-colors">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="font-sans text-xs text-chocolate-700 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Source verification footer */}
+              <div className="pt-3 border-t border-taro-100 flex items-center space-x-1.5 text-[10px] font-mono text-taro-700 font-bold">
+                <CheckCircle2 size={12} className="text-mint-600 shrink-0" />
+                <span className="truncate">{item.sourceNote}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tip for desktop users */}
+        <div className="flex items-center justify-center space-x-2 text-xs font-mono text-chocolate-500 mt-2">
+          <Sparkles size={14} className="text-pudding-500" />
+          <span>Có thể dùng chuột kéo ngang hoặc dùng nút mũi tên bên trên để lướt qua các mốc thời gian</span>
         </div>
       </div>
     </section>

@@ -11,12 +11,12 @@ export const Header: React.FC<HeaderProps> = ({ onExploreStory }) => {
 
   const navLinks = [
     { label: 'QUÁN CAFE', href: '#hero' },
-    { label: 'THỰC ĐƠN SLIME', href: '#motifs' },
-    { label: 'TRUYỆN KỂ', href: '#story' },
-    { label: 'NHẬT KÝ', href: '#timeline' },
-    { label: 'ALBUM ẢNH', href: '#gallery' },
-    { label: 'SỔ TAY MẬT', href: '#archive' },
-    { label: 'JUKEBOX', href: '#music' },
+    { label: 'BENTO MENU', href: '#motifs' },
+    { label: 'STORYBOOK', href: '#story' },
+    { label: 'ROADMAP', href: '#timeline' },
+    { label: 'BENTO ART', href: '#gallery' },
+    { label: 'HỒ SƠ MẬT', href: '#archive' },
+    { label: 'VINYL JUKEBOX', href: '#music' },
   ];
 
   return (
