@@ -3,84 +3,80 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
-/* Custom Scrollbar */
+/* Cozy Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09080b;
+  background: #FAF5EE;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #26202d;
-  border-radius: 4px;
-  border: 1px solid rgba(188, 165, 216, 0.2);
+  background: #D0BCFF;
+  border-radius: 9999px;
+  border: 2px solid #FAF5EE;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9d5369;
+  background: #F28B9F;
 }
 
-/* Glassmorphism & Panel Treatments */
-.glass-panel {
-  background: rgba(22, 17, 28, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(188, 165, 216, 0.15);
+/* Slime & Cafe Card Treatments */
+.cafe-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(208, 188, 255, 0.35);
+  box-shadow: 0 10px 30px -8px rgba(90, 53, 179, 0.08), 0 4px 14px -3px rgba(242, 139, 159, 0.08);
 }
 
-.glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.cafe-card-hover {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.glass-panel-hover:hover {
-  background: rgba(34, 25, 46, 0.85);
-  border-color: rgba(188, 165, 216, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(157, 83, 105, 0.25);
-  transform: translateY(-2px);
+.cafe-card-hover:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(242, 139, 159, 0.6);
+  box-shadow: 0 16px 36px -8px rgba(242, 139, 159, 0.22);
 }
 
-.parchment-border {
-  border: 1px solid rgba(188, 165, 216, 0.2);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6), 0 20px 50px rgba(0, 0, 0, 0.85);
+/* Polaroid & Sticker Styling */
+.polaroid-frame {
+  background: #FFFFFF;
+  padding: 12px 12px 24px 12px;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 30px -8px rgba(43, 35, 56, 0.12), 0 2px 8px -2px rgba(43, 35, 56, 0.06);
+  border: 1px solid rgba(230, 218, 254, 0.4);
 }
 
-/* Text glow utilities */
-.text-glow-lavender {
-  text-shadow: 0 0 20px rgba(188, 165, 216, 0.5), 0 0 40px rgba(188, 165, 216, 0.2);
+.tape-sticker {
+  background: rgba(255, 240, 243, 0.85);
+  border: 1px dashed rgba(242, 139, 159, 0.5);
+  backdrop-filter: blur(4px);
 }
 
-.text-glow-rose {
-  text-shadow: 0 0 20px rgba(157, 83, 105, 0.6), 0 0 40px rgba(157, 83, 105, 0.3);
+/* Wobbly Button Animation */
+.bubble-btn {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.text-glow-cyan {
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
+.bubble-btn:hover {
+  transform: scale(1.05);
 }
 
-/* Floating animation helper */
-@keyframes floatGentle {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(0.5deg);
-  }
+.bubble-btn:active {
+  transform: scale(0.96);
 }
 
-.animate-float-gentle {
-  animation: floatGentle 7s ease-in-out infinite;
-}
-
-/* Modal styling */
+/* Dialog Backdrop */
 dialog::backdrop {
-  background: rgba(9, 8, 11, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(43, 35, 56, 0.6);
+  backdrop-filter: blur(6px);
 }
 
 /* Reduced motion preference */

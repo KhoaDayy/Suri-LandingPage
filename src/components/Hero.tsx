@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, BookOpen, Layers, ChevronDown, Sparkles, Shield } from 'lucide-react';
+import { Eye, BookOpen, Layers, ChevronDown, Sparkles, Coffee, Glasses } from 'lucide-react';
 import { SURI_DATA } from '../data/suriData';
 
 interface HeroProps {
@@ -17,22 +17,36 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden bg-charcoal-950 flex flex-col justify-between pt-24 pb-12"
+      className="relative min-h-screen w-full overflow-hidden bg-[#FAF7F2] flex flex-col justify-between pt-24 pb-12"
     >
-      {/* Ambient Lighting Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-plum-700/20 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-roseAccent-600/15 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-waterCyan-500/10 blur-[140px] rounded-full pointer-events-none" />
+      {/* Pastel Atmospheric Blobs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-taro-200/30 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-berry-200/25 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-pudding-200/30 blur-[130px] rounded-full pointer-events-none" />
+
+      {/* Floating Kawaii Elements (Background decorations) */}
+      <div className="absolute top-28 left-8 text-2xl animate-float-soft pointer-events-none select-none opacity-80">
+        🍮
+      </div>
+      <div className="absolute top-44 right-12 text-3xl animate-float-slow pointer-events-none select-none opacity-70">
+        🦋
+      </div>
+      <div className="absolute bottom-24 left-16 text-2xl animate-wiggle-gentle pointer-events-none select-none opacity-75">
+        🌸
+      </div>
+      <div className="absolute bottom-36 right-20 text-2xl animate-float-soft pointer-events-none select-none opacity-80">
+        🍰
+      </div>
 
       {/* Mode Switcher Pill */}
       <div className="relative z-30 flex justify-center mb-6">
-        <div className="inline-flex items-center bg-[#140F1D]/90 border border-lavender-400/30 p-1.5 rounded-full backdrop-blur-xl shadow-[0_0_30px_rgba(0,0,0,0.85)]">
+        <div className="inline-flex items-center bg-white/90 border border-taro-200 p-1.5 rounded-full backdrop-blur-md shadow-cafe">
           <button
             onClick={() => setViewMode('showcase')}
-            className={`flex items-center space-x-2 px-5 py-2 rounded-full font-display text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+            className={`flex items-center space-x-2 px-5 py-2 rounded-full font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 bubble-btn ${
               viewMode === 'showcase'
-                ? 'bg-gradient-to-r from-roseAccent-500 via-plum-700 to-lavender-500 text-white shadow-[0_0_20px_rgba(157,83,105,0.6)] scale-105'
-                : 'text-ivory-400 hover:text-white hover:bg-white/5'
+                ? 'bg-gradient-to-r from-taro-500 to-berry-400 text-white shadow-md'
+                : 'text-chocolate-600 hover:text-chocolate-900 hover:bg-taro-50'
             }`}
           >
             <Eye size={14} />
@@ -40,104 +54,105 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
           </button>
           <button
             onClick={() => setViewMode('dossier')}
-            className={`flex items-center space-x-2 px-5 py-2 rounded-full font-display text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+            className={`flex items-center space-x-2 px-5 py-2 rounded-full font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 bubble-btn ${
               viewMode === 'dossier'
-                ? 'bg-gradient-to-r from-roseAccent-500 via-plum-700 to-lavender-500 text-white shadow-[0_0_20px_rgba(157,83,105,0.6)] scale-105'
-                : 'text-ivory-400 hover:text-white hover:bg-white/5'
+                ? 'bg-gradient-to-r from-taro-500 to-berry-400 text-white shadow-md'
+                : 'text-chocolate-600 hover:text-chocolate-900 hover:bg-taro-50'
             }`}
           >
             <Layers size={14} />
-            <span>DOSSIER VIEW</span>
+            <span>CAFE VIP CARD</span>
           </button>
         </div>
       </div>
 
       {/* SHOWCASE VIEW */}
       {viewMode === 'showcase' && (
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex flex-col lg:flex-row items-center justify-between gap-12 z-20 animate-fade-in">
-          {/* Left Hero Typography & Narrative */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex flex-col lg:flex-row items-center justify-between gap-10 z-20 animate-fade-in">
+          {/* Left Hero Typography & Warm Narrative */}
           <div className="w-full lg:w-7/12 space-y-6 text-center lg:text-left">
             {/* Status Badge */}
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-charcoal-800/80 border border-lavender-400/30 backdrop-blur-md shadow-lg shadow-plum-900/50">
-              <span className="w-2 h-2 rounded-full bg-roseAccent-400 animate-ping" />
-              <span className="font-display text-xs tracking-widest text-lavender-200 uppercase font-semibold">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-taro-200 text-taro-700 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-pudding-400 animate-ping" />
+              <span className="font-display text-xs font-bold tracking-wider uppercase">
                 {SURI_DATA.subtitle}
               </span>
             </div>
 
             {/* Main Display Headline */}
             <div className="space-y-1">
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-gothic tracking-wider text-ivory-100 uppercase drop-shadow-[0_10px_25px_rgba(0,0,0,0.95)]">
-                SURI <span className="text-roseAccent-400 text-glow-rose">MUKEKI</span>
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-kawaii font-extrabold tracking-tight text-chocolate-900 drop-shadow-sm">
+                SURI <span className="text-berry-500">{SURI_DATA.name.split(' ')[1]}</span>
               </h1>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
-                <span className="font-display text-xs sm:text-sm tracking-[0.25em] text-lavender-300 uppercase font-bold">
+                <span className="font-display text-xs sm:text-sm font-bold tracking-wider text-taro-600 uppercase">
                   {SURI_DATA.title}
                 </span>
-                <span className="text-roseAccent-500 text-xs">✦</span>
-                <span className="font-display text-xs sm:text-sm tracking-[0.2em] text-waterCyan-300 uppercase">
+                <span className="text-pudding-500 text-sm">✦</span>
+                <span className="font-story text-xs sm:text-sm font-bold tracking-widest text-chocolate-500">
                   {SURI_DATA.japaneseName}
                 </span>
               </div>
             </div>
 
-            {/* Poetic Quote */}
-            <p className="text-ivory-300/90 text-sm sm:text-base font-editorial italic max-w-2xl mx-auto lg:mx-0 leading-relaxed border-l-0 lg:border-l-2 border-roseAccent-500/60 lg:pl-5 py-1 drop-shadow-md">
+            {/* Cozy Cafe Quote */}
+            <p className="text-chocolate-700 text-base sm:text-lg font-display font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed border-l-0 lg:border-l-4 border-pudding-400 lg:pl-5 py-1">
               {SURI_DATA.quote}
             </p>
 
-            {/* Glasses Toggle for Model 3.0 */}
+            {/* Glasses Toggle Button */}
             <div className="flex items-center justify-center lg:justify-start space-x-3 pt-1">
-              <span className="text-xs font-display text-ivory-400 uppercase tracking-widest">
-                Tạo hình Model 3.0:
+              <span className="text-xs font-display font-bold text-chocolate-500 uppercase tracking-wider flex items-center space-x-1">
+                <Glasses size={14} className="text-taro-500" />
+                <span>Tạo hình Model 3.0:</span>
               </span>
               <button
                 onClick={() => setUseNoGlasses(!useNoGlasses)}
-                className={`text-xs font-display px-3 py-1 rounded-full border transition-all ${
+                className={`text-xs font-display font-bold px-3.5 py-1.5 rounded-full border transition-all bubble-btn ${
                   useNoGlasses
-                    ? 'border-waterCyan-400 text-waterCyan-300 bg-waterCyan-500/10'
-                    : 'border-lavender-400 text-lavender-200 bg-plum-800'
+                    ? 'border-berry-300 text-berry-600 bg-berry-50'
+                    : 'border-taro-300 text-taro-700 bg-taro-100/70 shadow-xs'
                 }`}
               >
-                {useNoGlasses ? 'Tháo kính' : 'Đeo kính tri thức'}
+                {useNoGlasses ? '✨ Tháo kính dễ thương' : '👓 Đeo kính tri thức'}
               </button>
             </div>
 
-            {/* CTAs */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            {/* Action CTAs */}
+            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
               <a
                 href="#story"
-                className="px-8 py-3.5 rounded-full text-xs font-display font-bold tracking-widest text-white uppercase bg-gradient-to-r from-roseAccent-500 via-plum-700 to-lavender-500 hover:brightness-110 shadow-[0_0_25px_rgba(157,83,105,0.5)] hover:scale-105 transition-all duration-300 flex items-center space-x-2.5"
+                className="px-8 py-3.5 rounded-full text-xs font-display font-bold tracking-wider text-white uppercase bg-gradient-to-r from-taro-500 via-berry-400 to-pudding-400 hover:brightness-105 shadow-md shadow-taro-400/30 transition-all duration-300 flex items-center space-x-2 bubble-btn"
               >
-                <Sparkles size={16} className="text-lavender-200" />
-                <span>KHÁM PHÁ CỐT TRUYỆN</span>
+                <Coffee size={16} />
+                <span>GHÉ THĂM TIỆM TRÀ</span>
               </a>
               <button
                 onClick={() => onOpenArtPreview(currentCutout)}
-                className="px-6 py-3.5 rounded-full text-xs font-display font-semibold tracking-widest text-lavender-300 uppercase bg-charcoal-800/90 hover:bg-plum-800 border border-lavender-400/30 hover:border-lavender-400/60 transition-all duration-300 flex items-center space-x-2"
+                className="px-6 py-3.5 rounded-full text-xs font-display font-bold tracking-wider text-chocolate-700 uppercase bg-white hover:bg-cream-100 border border-taro-200 transition-all duration-300 flex items-center space-x-2 shadow-xs bubble-btn"
               >
-                <Eye size={15} />
-                <span>PHÓNG TO TOÀN BỘ TRANH</span>
+                <Eye size={15} className="text-taro-500" />
+                <span>PHÓNG TO TRANH GỐC</span>
               </button>
             </div>
           </div>
 
           {/* Right Hero Character Presentation */}
           <div className="w-full lg:w-5/12 flex justify-center items-center relative">
-            {/* Luminous Glow Behind Character */}
-            <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-roseAccent-500/30 via-plum-700/20 to-lavender-400/20 absolute blur-3xl pointer-events-none animate-pulse-glow" />
+            {/* Luminous Soft Halo */}
+            <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-pudding-200/50 via-taro-200/40 to-berry-200/40 absolute blur-3xl pointer-events-none" />
 
-            {/* Main Character Cutout */}
-            <div className="relative z-10 transition-transform duration-700 hover:scale-[1.03]">
+            {/* Transparent High-Res Cutout */}
+            <div className="relative z-10 transition-transform duration-700 hover:scale-[1.02]">
               <img
                 src={currentCutout}
                 alt="Suri Mukeki Model 3.0"
-                className="max-h-[580px] sm:max-h-[660px] w-auto object-contain filter drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] animate-float-gentle cursor-pointer"
+                className="max-h-[560px] sm:max-h-[640px] w-auto object-contain filter drop-shadow-[0_16px_32px_rgba(43,35,56,0.18)] animate-float-soft cursor-pointer"
                 onClick={() => onOpenArtPreview(currentCutout)}
-                title="Nhấp để phóng to toàn màn hình sắc nét"
+                title="Nhấp để phóng to tranh gốc sắc nét"
               />
               <div className="text-center mt-3">
-                <span className="text-[10px] font-mono tracking-widest text-lavender-400 uppercase bg-charcoal-900/80 px-3 py-1 rounded-full border border-lavender-400/20">
+                <span className="text-[11px] font-display font-bold tracking-wider text-chocolate-500 uppercase bg-white/90 px-3.5 py-1 rounded-full border border-taro-200 shadow-xs">
                   Model 3.0 • Art by T_blence • Rig by Sophiel
                 </span>
               </div>
@@ -146,91 +161,114 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
         </div>
       )}
 
-      {/* DOSSIER VIEW */}
+      {/* CAFE VIP CARD / DOSSIER VIEW */}
       {viewMode === 'dossier' && (
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow flex items-center z-20 animate-fade-in">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full">
-            {/* Metadata Dossier */}
+            {/* VIP Loyalty Card Container */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-charcoal-800 border border-lavender-400/30 font-mono text-xs text-lavender-300">
-                <Shield size={13} className="text-roseAccent-400" />
-                <span>{SURI_DATA.codeName}</span>
-              </div>
-
-              <div>
-                <h2 className="text-4xl sm:text-5xl font-gothic tracking-wide text-ivory-100 uppercase">
-                  SURI <span className="text-roseAccent-400">{SURI_DATA.profile.fanName}</span>
-                </h2>
-                <p className="text-xs sm:text-sm font-display tracking-widest text-lavender-300 mt-1">
-                  {SURI_DATA.japaneseName} // {SURI_DATA.title}
-                </p>
-              </div>
-
-              {/* Grid of Dossier Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-display text-xs">
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">NGÀY SINH & CUNG</div>
-                  <div className="text-ivory-100 font-bold text-sm">{SURI_DATA.profile.birthday}</div>
-                  <div className="text-lavender-300 text-[11px]">{SURI_DATA.profile.zodiac}</div>
+              <div className="cafe-card rounded-5xl p-6 sm:p-8 space-y-5 border-2 border-taro-200/80 shadow-cafe relative overflow-hidden">
+                {/* Cute Card Header */}
+                <div className="flex items-center justify-between border-b border-taro-100 pb-4">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-2xl">🍮</span>
+                    <div>
+                      <h2 className="font-kawaii text-xl sm:text-2xl font-bold text-chocolate-900">
+                        SLIME CAFE VIP CARD
+                      </h2>
+                      <p className="text-[11px] font-mono text-taro-600 font-bold">
+                        MEMBER ID: SUREIYA-VIP-001
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-berry-100 text-berry-600 font-display text-xs font-bold border border-berry-200">
+                    👑 HỘI VIÊN THÂN THIẾT
+                  </span>
                 </div>
 
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">CHIỀU CAO & CÂN NẶNG</div>
-                  <div className="text-ivory-100 font-bold text-sm">{SURI_DATA.profile.height}</div>
-                  <div className="text-lavender-300 text-[11px]">{SURI_DATA.profile.weight}</div>
+                {/* Grid of VIP Details */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-display text-xs">
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">SINH NHẬT</div>
+                    <div className="text-chocolate-900 font-extrabold text-sm">{SURI_DATA.profile.birthday}</div>
+                    <div className="text-taro-600 font-semibold text-[11px]">{SURI_DATA.profile.zodiac}</div>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">CHIỀU CAO</div>
+                    <div className="text-chocolate-900 font-extrabold text-sm">{SURI_DATA.profile.height}</div>
+                    <div className="text-taro-600 font-semibold text-[11px]">{SURI_DATA.profile.weight}</div>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">NGÀY GIA NHẬP</div>
+                    <div className="text-chocolate-900 font-extrabold text-sm">{SURI_DATA.profile.debutDate}</div>
+                    <div className="text-mint-600 font-semibold text-[11px]">Independent VTuber</div>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">FANBASE</div>
+                    <div className="text-chocolate-900 font-extrabold text-sm">{SURI_DATA.profile.fanName}</div>
+                    <div className="text-berry-500 font-semibold text-[11px]">{SURI_DATA.profile.representativeEmojis}</div>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">NGUYÊN TỐ DỊ GIỚI</div>
+                    <div className="text-chocolate-900 font-extrabold text-sm">Thủy Slime & Lôi Irus</div>
+                    <div className="text-taro-600 font-semibold text-[11px]">Lưỡng nguyên hài hòa</div>
+                  </div>
+
+                  <div className="p-3.5 bg-cream-100/90 border border-pudding-200 rounded-2xl space-y-1">
+                    <div className="text-chocolate-400 text-[10px] font-bold tracking-wider uppercase">HASHTAG LIVE</div>
+                    <div className="text-berry-600 font-extrabold text-sm">{SURI_DATA.profile.hashtags.live}</div>
+                    <div className="text-mint-600 font-semibold text-[11px]">{SURI_DATA.profile.hashtags.fanart}</div>
+                  </div>
                 </div>
 
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">DEBUT CHÍNH THỨC</div>
-                  <div className="text-ivory-100 font-bold text-sm">{SURI_DATA.profile.debutDate}</div>
-                  <div className="text-waterCyan-300 text-[11px]">Independent VTuber</div>
+                {/* Favorite Treats Bar */}
+                <div className="p-4 rounded-2xl bg-cream-100 border border-taro-200/60">
+                  <span className="text-[10px] font-bold text-chocolate-400 uppercase tracking-wider block mb-1.5">
+                    MÓN KHOÁI KHẨU CỦA CÔ CHỦ TIỆM:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {SURI_DATA.profile.favoriteTreats.map((treat) => (
+                      <span
+                        key={treat}
+                        className="px-3 py-1 rounded-full bg-white text-chocolate-700 font-display text-xs font-bold border border-taro-200 shadow-xs"
+                      >
+                        {treat}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">TÊN FANBASE</div>
-                  <div className="text-ivory-100 font-bold text-sm">{SURI_DATA.profile.fanName}</div>
-                  <div className="text-roseAccent-400 text-[11px]">{SURI_DATA.profile.representativeEmojis}</div>
+                {/* Card Actions */}
+                <div className="flex items-center space-x-3 pt-2">
+                  <a
+                    href="#story"
+                    className="px-6 py-3 bg-gradient-to-r from-taro-500 to-berry-400 hover:brightness-105 text-white font-display text-xs font-bold tracking-wider uppercase rounded-2xl shadow-sm transition flex items-center space-x-2 bubble-btn"
+                  >
+                    <BookOpen size={15} />
+                    <span>XEM TRUYỆN KỂ CAFE</span>
+                  </a>
+                  <button
+                    onClick={() => onOpenArtPreview(SURI_DATA.assets.daisyCrown)}
+                    className="px-5 py-3 bg-white hover:bg-cream-100 border border-taro-200 text-chocolate-700 font-display text-xs font-bold tracking-wider uppercase rounded-2xl flex items-center space-x-2 transition shadow-xs bubble-btn"
+                  >
+                    <Sparkles size={15} className="text-pudding-500" />
+                    <span>XEM TRANH VÒNG HOA CÚC</span>
+                  </button>
                 </div>
-
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">BẢN CHẤT LƯỠNG NGUYÊN</div>
-                  <div className="text-ivory-100 font-bold text-sm">Thủy Slime & Lôi Irus</div>
-                  <div className="text-lavender-300 text-[11px]">Nguyên tố đối xứng</div>
-                </div>
-
-                <div className="p-3.5 bg-charcoal-800/80 border border-lavender-400/25 rounded-xl space-y-1">
-                  <div className="text-ivory-400/70 text-[10px] tracking-wider uppercase">HASHTAG LIVE</div>
-                  <div className="text-roseAccent-400 font-bold text-sm">{SURI_DATA.profile.hashtags.live}</div>
-                  <div className="text-waterCyan-300 text-[11px]">{SURI_DATA.profile.hashtags.fanart}</div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center space-x-4 pt-2">
-                <a
-                  href="#story"
-                  className="px-7 py-3 bg-gradient-to-r from-roseAccent-500 to-plum-700 hover:brightness-110 text-white font-display text-xs font-bold tracking-widest uppercase rounded-xl shadow-lg shadow-roseAccent-500/30 transition flex items-center space-x-2"
-                >
-                  <BookOpen size={15} />
-                  <span>ĐỌC CỐT TRUYỆN</span>
-                </a>
-                <button
-                  onClick={() => onOpenArtPreview(SURI_DATA.assets.heroCutout)}
-                  className="px-6 py-3 bg-charcoal-800 hover:bg-plum-800 border border-lavender-400/30 text-lavender-200 font-display text-xs tracking-widest uppercase rounded-xl flex items-center space-x-2 transition"
-                >
-                  <Sparkles size={15} className="text-roseAccent-400" />
-                  <span>XEM THIẾT KẾ MODEL 3.0</span>
-                </button>
               </div>
             </div>
 
             {/* Cutout on Right */}
             <div className="lg:col-span-5 flex justify-center items-center relative">
-              <div className="w-80 h-80 rounded-full bg-plum-800/30 blur-3xl absolute pointer-events-none" />
+              <div className="w-80 h-80 rounded-full bg-taro-200/40 blur-3xl absolute pointer-events-none" />
               <img
                 src={SURI_DATA.assets.heroCutout}
                 alt="Suri Mukeki Cutout"
-                className="max-h-[520px] w-auto object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.95)] z-10"
+                className="max-h-[500px] w-auto object-contain filter drop-shadow-[0_12px_28px_rgba(43,35,56,0.15)] z-10"
               />
             </div>
           </div>
@@ -241,10 +279,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
       <div className="relative z-20 flex justify-center pt-4">
         <a
           href="#motifs"
-          className="flex flex-col items-center space-y-1 text-lavender-400/80 hover:text-white transition group"
+          className="flex flex-col items-center space-y-1 text-chocolate-500 hover:text-taro-600 transition group"
         >
-          <span className="text-[10px] font-display tracking-[0.2em] uppercase">KHÁM PHÁ CHI TIẾT</span>
-          <ChevronDown size={18} className="animate-bounce text-roseAccent-400 group-hover:text-white" />
+          <span className="text-[10px] font-display font-bold tracking-widest uppercase">KHÁM PHÁ THỰC ĐƠN</span>
+          <ChevronDown size={18} className="animate-bounce text-berry-500 group-hover:text-berry-600" />
         </a>
       </div>
     </section>

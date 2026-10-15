@@ -42,7 +42,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#09080B] text-ivory-200 flex flex-col font-sans selection:bg-roseAccent-600 selection:text-white">
+    <div className="min-h-screen bg-[#FAF7F2] text-chocolate-800 flex flex-col font-sans selection:bg-berry-300 selection:text-chocolate-900">
       {/* Fixed Header */}
       <Header onExploreStory={handleScrollToStory} />
 

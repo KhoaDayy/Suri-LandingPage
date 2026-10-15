@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, Music } from 'lucide-react';
 import { CoverItem } from '../data/suriData';
 
 interface VideoModalProps {
@@ -35,26 +35,29 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, cover, onClose }
       role="dialog"
       aria-modal="true"
       aria-label={`Video ${cover.title}`}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#09080B]/90 backdrop-blur-xl animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-chocolate-950/75 backdrop-blur-md animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative max-w-4xl w-full flex flex-col bg-charcoal-900 border border-lavender-400/30 rounded-3xl overflow-hidden shadow-2xl"
+        className="relative max-w-4xl w-full flex flex-col bg-white border-2 border-taro-200 rounded-4xl overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <header className="px-6 py-4 border-b border-lavender-400/20 flex items-center justify-between bg-charcoal-950/70">
+        <header className="px-6 py-4 border-b border-taro-200 flex items-center justify-between bg-[#FDFBF7]">
           <div>
-            <h3 className="font-gothic text-lg text-ivory-100 font-bold">
-              {cover.title}
-            </h3>
-            <p className="text-xs font-mono text-lavender-400">
-              Nguyên tác: {cover.originalArtist} • Cover bởi Suri Mukeki
+            <div className="flex items-center space-x-2">
+              <Music size={16} className="text-berry-500" />
+              <h3 className="font-kawaii text-lg text-chocolate-900 font-extrabold">
+                {cover.title}
+              </h3>
+            </div>
+            <p className="text-xs font-mono text-chocolate-600 mt-0.5">
+              Nguyên tác: {cover.originalArtist} • Trình bày: Suri Mukeki
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg bg-charcoal-800 hover:bg-roseAccent-600 text-ivory-300 hover:text-white transition"
+            className="p-2 rounded-xl bg-berry-50 hover:bg-berry-100 text-berry-700 hover:text-berry-900 transition bubble-btn"
             title="Đóng video"
           >
             <X size={20} />
@@ -73,17 +76,17 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, cover, onClose }
         </div>
 
         {/* Modal Footer */}
-        <footer className="px-6 py-3.5 border-t border-lavender-400/20 flex items-center justify-between text-xs font-mono text-lavender-400 bg-charcoal-950/70">
+        <footer className="px-6 py-3.5 border-t border-taro-200 flex items-center justify-between text-xs font-mono text-chocolate-600 bg-[#FDFBF7]">
           <a
             href={`https://www.youtube.com/watch?v=${cover.youtubeId}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-1.5 text-roseAccent-400 hover:text-roseAccent-300 transition font-bold"
+            className="flex items-center space-x-1.5 text-berry-600 hover:text-berry-700 transition font-bold"
           >
             <span>Mở xem trên YouTube</span>
             <ExternalLink size={14} />
           </a>
-          <span>PHÍM ESC ĐỂ ĐÓNG</span>
+          <span>BẤM PHÍM ESC HOẶC VÙNG NGOÀI ĐỂ ĐÓNG</span>
         </footer>
       </div>
     </div>

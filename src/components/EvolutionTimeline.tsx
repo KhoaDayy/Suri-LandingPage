@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { History, Calendar, CheckCircle2 } from 'lucide-react';
+import { Calendar, CheckCircle2, Bookmark } from 'lucide-react';
 import { TIMELINE_DATA, MilestoneItem } from '../data/suriData';
 
 export const EvolutionTimeline: React.FC = () => {
@@ -17,57 +17,57 @@ export const EvolutionTimeline: React.FC = () => {
   const getCategoryBadgeStyle = (cat: MilestoneItem['category']) => {
     switch (cat) {
       case 'DEBUT':
-        return 'bg-roseAccent-600/30 text-roseAccent-300 border-roseAccent-500/40';
+        return 'bg-berry-100 text-berry-600 border-berry-200';
       case 'MODEL':
-        return 'bg-lavender-500/30 text-lavender-200 border-lavender-400/40';
+        return 'bg-taro-100 text-taro-700 border-taro-200';
       case 'MILESTONE':
-        return 'bg-waterCyan-500/30 text-waterCyan-300 border-waterCyan-400/40';
+        return 'bg-pudding-100 text-pudding-700 border-pudding-300';
       case 'LORE':
-        return 'bg-plum-700/40 text-lavender-300 border-lavender-400/30';
+        return 'bg-mint-100 text-mint-700 border-mint-200';
       case 'MUSIC':
-        return 'bg-amber-500/30 text-amber-300 border-amber-400/40';
+        return 'bg-amber-100 text-amber-700 border-amber-200';
       default:
-        return 'bg-charcoal-800 text-ivory-300 border-lavender-400/20';
+        return 'bg-cream-100 text-chocolate-700 border-taro-200';
     }
   };
 
   return (
-    <section id="timeline" className="relative min-h-screen py-24 bg-[#0B0910] border-t border-lavender-400/20 overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/2 left-10 w-[600px] h-[600px] bg-plum-800/15 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-roseAccent-600/10 blur-[160px] rounded-full pointer-events-none" />
+    <section id="timeline" className="relative min-h-screen py-24 bg-[#F5ECE0]/60 border-t border-taro-200/60 overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute top-1/2 left-10 w-[600px] h-[600px] bg-taro-200/30 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-berry-200/20 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center space-y-3 mb-14">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-charcoal-800 border border-lavender-400/30 text-lavender-200 font-display text-xs tracking-widest uppercase shadow-lg shadow-plum-900/30">
-            <History className="w-3.5 h-3.5 text-roseAccent-400" />
-            <span>03 // DÒNG THỜI GIAN & CỘT MỐC // EVOLUTION TIMELINE</span>
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-taro-200 text-taro-700 font-display text-xs font-bold tracking-wider uppercase shadow-xs">
+            <Bookmark className="w-3.5 h-3.5 text-berry-500" />
+            <span>03 // BẢNG TIN QUÁN CAFE // CAFE MEMORY BULLETIN</span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-gothic tracking-wider text-ivory-100 uppercase drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]">
-            CHRONICLES & <span className="text-roseAccent-400 text-glow-rose">EVOLUTION</span>
+          <h2 className="text-4xl sm:text-6xl font-kawaii font-extrabold tracking-tight text-chocolate-900 drop-shadow-xs">
+            CAFE BULLETIN & <span className="text-berry-500">MEMORIES</span>
           </h2>
-          <p className="font-display text-xs sm:text-sm tracking-[0.25em] text-lavender-300 max-w-xl mx-auto uppercase">
-            HÀNH TRÌNH TỪ NGÀY ĐẦU TIÊN CẤT TIẾNG ĐẾN HƠN 51,400+ TÂM HỒN ĐỒNG HÀNH
+          <p className="font-display text-xs sm:text-sm font-bold tracking-widest text-chocolate-500 max-w-xl mx-auto uppercase">
+            LƯU GIỮ TỪNG KỶ NIỆM NGỌT NGÀO TỪ NGÀY MỞ CỬA ĐẾN HÔM NAY
           </p>
         </div>
 
-        {/* Filter Pills */}
+        {/* Filter Bar */}
         <div className="flex flex-wrap justify-center gap-2.5 mb-14">
           {[
-            { id: 'ALL', label: 'TẤT CẢ CỘT MỐC' },
-            { id: 'MODEL', label: 'MẪU HÌNH (MODELS)' },
-            { id: 'MILESTONE', label: 'CỘT MỐC ĐĂNG KÝ' },
-            { id: 'DEBUT_LORE', label: 'DEBUT & LORE' },
-            { id: 'MUSIC', label: 'ÂM NHẠC' },
+            { id: 'ALL', label: 'TẤT CẢ KỶ NIỆM 🍮' },
+            { id: 'MODEL', label: 'TẠO HÌNH (MODELS) 🎀' },
+            { id: 'MILESTONE', label: 'CỘT MỐC GIA ĐÌNH 🎉' },
+            { id: 'DEBUT_LORE', label: 'DEBUT & LORE 📜' },
+            { id: 'MUSIC', label: 'ÂM NHẠC 🎵' },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setFilter(tab.id)}
-              className={`px-4 py-2 rounded-full font-display text-xs tracking-wider uppercase border transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full font-display text-xs font-bold tracking-wider uppercase border transition-all duration-300 bubble-btn ${
                 filter === tab.id
-                  ? 'bg-plum-800 text-white border-roseAccent-500 shadow-[0_0_15px_rgba(157,83,105,0.4)]'
-                  : 'bg-charcoal-800/60 text-ivory-400 border-lavender-400/20 hover:text-white hover:border-lavender-400/40'
+                  ? 'bg-gradient-to-r from-taro-500 to-berry-400 text-white border-transparent shadow-sm'
+                  : 'bg-white text-chocolate-600 border-taro-200 hover:border-taro-400'
               }`}
             >
               {tab.label}
@@ -75,8 +75,8 @@ export const EvolutionTimeline: React.FC = () => {
           ))}
         </div>
 
-        {/* Timeline Line Container */}
-        <div className="relative border-l-2 border-lavender-400/20 ml-4 md:ml-1/2 md:-translate-x-1/2 space-y-10 pl-6 md:pl-0">
+        {/* Vertical Bulletin Board */}
+        <div className="relative border-l-2 border-taro-300 ml-4 md:ml-1/2 md:-translate-x-1/2 space-y-10 pl-6 md:pl-0">
           {filteredItems.map((item, index) => {
             const isEven = index % 2 === 0;
             return (
@@ -86,36 +86,41 @@ export const EvolutionTimeline: React.FC = () => {
                   isEven ? 'md:flex-row-reverse' : ''
                 } group`}
               >
-                {/* Central Point Marker */}
-                <div className="absolute -left-[31px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-charcoal-900 border-2 border-roseAccent-400 shadow-[0_0_12px_rgba(157,83,105,0.8)] z-20 group-hover:scale-125 transition-transform" />
+                {/* Cute Central Pin Marker */}
+                <div className="absolute -left-[30px] md:left-1/2 md:-translate-x-1/2 w-7 h-7 rounded-full bg-white border-2 border-berry-400 shadow-sm z-20 flex items-center justify-center text-xs group-hover:scale-125 transition-transform select-none">
+                  {item.stickerEmoji}
+                </div>
 
                 {/* Card Container */}
                 <div className={`w-full md:w-[46%] ${isEven ? 'md:pr-10' : 'md:pl-10'}`}>
-                  <div className="glass-panel glass-panel-hover rounded-2xl p-6 border border-lavender-400/20 shadow-xl space-y-3">
+                  <div className="cafe-card cafe-card-hover rounded-4xl p-6 border-2 border-taro-200/70 shadow-cafe space-y-3 relative overflow-hidden">
+                    {/* Washi Tape Accent */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 tape-sticker rounded-md rotate-[-2deg] pointer-events-none" />
+
                     {/* Header Row */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-lavender-400/15 pb-3">
-                      <div className="flex items-center space-x-2 text-xs font-mono text-lavender-300">
-                        <Calendar size={13} className="text-roseAccent-400" />
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-taro-100 pb-2.5 pt-1">
+                      <div className="flex items-center space-x-1.5 text-xs font-display font-bold text-chocolate-500">
+                        <Calendar size={13} className="text-berry-500" />
                         <span>{item.date}</span>
                       </div>
-                      <span className={`text-[10px] font-mono tracking-widest px-2.5 py-0.5 rounded-full border uppercase ${getCategoryBadgeStyle(item.category)}`}>
+                      <span className={`text-[10px] font-display font-bold tracking-wider px-2.5 py-0.5 rounded-full border uppercase ${getCategoryBadgeStyle(item.category)}`}>
                         {item.badge}
                       </span>
                     </div>
 
                     {/* Milestone Title */}
-                    <h3 className="text-lg sm:text-xl font-gothic text-ivory-100 group-hover:text-lavender-200 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-kawaii font-bold text-chocolate-900 group-hover:text-taro-600 transition-colors">
                       {item.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="font-editorial text-base text-ivory-300 leading-relaxed">
+                    <p className="font-story text-sm text-chocolate-700 leading-relaxed">
                       {item.description}
                     </p>
 
-                    {/* Provenance Footer */}
-                    <div className="pt-2 flex items-center space-x-2 text-[11px] font-mono text-lavender-400/80 border-t border-lavender-400/10">
-                      <CheckCircle2 size={12} className="text-waterCyan-400 shrink-0" />
+                    {/* Source Citation */}
+                    <div className="pt-2 flex items-center space-x-1.5 text-[11px] font-display font-semibold text-taro-600 border-t border-taro-100">
+                      <CheckCircle2 size={12} className="text-mint-500 shrink-0" />
                       <span className="truncate">{item.sourceNote}</span>
                     </div>
                   </div>

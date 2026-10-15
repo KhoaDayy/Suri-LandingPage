@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, ShieldCheck, ZoomIn, FileText } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, CheckCircle2, ZoomIn, Sparkles } from 'lucide-react';
 import { STORY_CHAPTERS, StoryChapter } from '../data/suriData';
 
 interface StoryRecordProps {
@@ -19,23 +19,23 @@ export const StoryRecord: React.FC<StoryRecordProps> = ({ onOpenIllustration }) 
   };
 
   return (
-    <section id="story" className="relative min-h-screen py-24 bg-[#09070D] border-t border-lavender-400/20 overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-1/3 right-10 w-[600px] h-[600px] bg-plum-800/15 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-waterCyan-500/10 blur-[160px] rounded-full pointer-events-none" />
+    <section id="story" className="relative min-h-screen py-24 bg-[#FAF5EE] border-t border-taro-200/60 overflow-hidden">
+      {/* Background Ambient Blobs */}
+      <div className="absolute top-1/3 right-10 w-[600px] h-[600px] bg-berry-200/20 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-taro-200/30 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center space-y-3 mb-16">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-charcoal-800 border border-lavender-400/30 text-lavender-200 font-display text-xs tracking-widest uppercase shadow-lg shadow-plum-900/30">
-            <BookOpen className="w-3.5 h-3.5 text-roseAccent-400" />
-            <span>02 // BIÊN NIÊN SỬ LORE // STORY RECORD</span>
+        <div className="text-center space-y-3 mb-14">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-taro-200 text-taro-700 font-display text-xs font-bold tracking-wider uppercase shadow-xs">
+            <BookOpen className="w-3.5 h-3.5 text-berry-500" />
+            <span>02 // QUYỂN TRUYỆN TRANH DỊ GIỚI // STORY BOOK</span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-gothic tracking-wider text-ivory-100 uppercase drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]">
-            STORY <span className="text-roseAccent-400 text-glow-rose">RECORD</span>
+          <h2 className="text-4xl sm:text-6xl font-kawaii font-extrabold tracking-tight text-chocolate-900 drop-shadow-xs">
+            STORY <span className="text-berry-500">BOOK</span>
           </h2>
-          <p className="font-display text-xs sm:text-sm tracking-[0.25em] text-lavender-300 max-w-xl mx-auto uppercase">
-            BIÊN NIÊN SỬ VỀ GIỌT NƯỚC TÁI SINH VÀ SẤM SÉT KẾT NỐI CÕI TRẦN
+          <p className="font-display text-xs sm:text-sm font-bold tracking-widest text-chocolate-500 max-w-xl mx-auto uppercase">
+            HÀNH TRÌNH TỪ BÉ SLIME ĐƠN ĐỘC ĐẾN MÁI NHÀ CỦA CỘNG ĐỒNG SUREIYA
           </p>
         </div>
 
@@ -47,126 +47,122 @@ export const StoryRecord: React.FC<StoryRecordProps> = ({ onOpenIllustration }) 
               <button
                 key={chap.chapterNumber}
                 onClick={() => setActiveChapterIndex(idx)}
-                className={`px-5 py-2.5 rounded-full font-display text-xs tracking-widest uppercase border transition-all duration-300 ${
+                className={`px-5 py-2.5 rounded-full font-display text-xs font-bold tracking-wider uppercase border transition-all duration-300 bubble-btn ${
                   isActive
-                    ? 'bg-gradient-to-r from-roseAccent-500 via-plum-700 to-lavender-500 text-white border-lavender-300 shadow-[0_0_20px_rgba(157,83,105,0.4)] scale-105'
-                    : 'bg-charcoal-800/80 border-lavender-400/20 text-ivory-300 hover:text-white hover:border-lavender-400/50'
+                    ? 'bg-gradient-to-r from-taro-500 to-berry-400 text-white border-transparent shadow-md scale-105'
+                    : 'bg-white border-taro-200 text-chocolate-700 hover:border-taro-400'
                 }`}
               >
                 <span>{chap.chapterNumber}: </span>
-                <span className="font-bold">{chap.title}</span>
+                <span>{chap.title}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Story Layout: Manuscript + Portrait */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          {/* Left Column: Portrait & Visual Archival Tag */}
-          <div className="lg:col-span-5 flex flex-col justify-between parchment-border bg-charcoal-900/80 rounded-3xl p-6 sm:p-8">
+        {/* Story Book Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          {/* Left: Illustration Polaroid Card */}
+          <div className="lg:col-span-5 flex flex-col justify-between cafe-card rounded-5xl p-6 sm:p-8 border-2 border-taro-200/70 shadow-cafe">
             <div className="space-y-4">
-              <div className="flex items-center justify-between border-b border-lavender-400/20 pb-3">
-                <span className="font-mono text-xs text-roseAccent-400 font-bold uppercase tracking-wider flex items-center space-x-1.5">
-                  <FileText size={14} />
-                  <span>{chapter.chapterNumber} ARCHIVE</span>
+              <div className="flex items-center justify-between border-b border-taro-100 pb-3">
+                <span className="font-display text-xs font-bold text-berry-600 uppercase flex items-center space-x-1.5">
+                  <Sparkles size={14} />
+                  <span>TRANH MINH HỌA {chapter.chapterNumber}</span>
                 </span>
-                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-plum-800 text-lavender-200 border border-lavender-400/30">
-                  {chapter.provenance === 'CONFIRMED' ? 'CHÍNH THỨC XÁC THỰC' : 'TƯ LIỆU LORE GHI NHẬN'}
+                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-cream-200 text-chocolate-600 font-bold border border-taro-200">
+                  {chapter.provenance === 'CONFIRMED' ? 'XÁC THỰC CHÍNH THỨC' : 'TƯ LIỆU LORE GHI NHẬN'}
                 </span>
               </div>
 
-              {/* Character Illustration Frame */}
+              {/* Illustration Frame */}
               <div
-                className="group relative rounded-2xl overflow-hidden border border-lavender-400/30 bg-charcoal-950 aspect-[4/5] flex items-center justify-center cursor-pointer shadow-2xl"
-                onClick={() => onOpenIllustration(chapter.characterIllustration)}
+                className="group relative rounded-3xl overflow-hidden bg-white border-2 border-taro-200 aspect-[4/5] flex items-center justify-center cursor-pointer shadow-sm bubble-btn"
+                onClick={() => onOpenIllustration(chapter.illustration)}
                 title="Nhấp để phóng to tranh minh họa"
               >
                 <img
-                  src={chapter.characterIllustration}
+                  src={chapter.illustration}
                   alt={chapter.title}
                   className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-charcoal-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                  <span className="px-3.5 py-1.5 rounded-full bg-plum-800/90 border border-roseAccent-400/60 text-white font-mono text-[11px] tracking-wider uppercase flex items-center space-x-1.5 shadow-xl backdrop-blur-sm">
-                    <ZoomIn size={14} className="text-roseAccent-400" />
+                <div className="absolute inset-0 bg-chocolate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <span className="px-3.5 py-1.5 rounded-full bg-white text-chocolate-900 font-display text-xs font-bold tracking-wider flex items-center space-x-1.5 shadow-md">
+                    <ZoomIn size={14} className="text-berry-500" />
                     <span>PHÓNG TO TRANH</span>
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-lavender-400/20 mt-4 space-y-2">
-              <p className="font-editorial text-sm italic text-ivory-300">
+            <div className="pt-4 border-t border-taro-100 mt-4 space-y-1.5">
+              <p className="font-story text-xs font-bold text-chocolate-600 italic">
                 {chapter.footerNote}
               </p>
-              <div className="flex items-center space-x-2 text-[11px] font-mono text-lavender-400">
-                <ShieldCheck size={13} className="text-waterCyan-400" />
+              <div className="flex items-center space-x-1.5 text-[11px] font-display text-taro-600 font-semibold">
+                <CheckCircle2 size={13} className="text-mint-500" />
                 <span>Nguồn: Livestream lưu trữ & Tài liệu creator</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Manuscript Article */}
-          <article className="lg:col-span-7 parchment-border bg-charcoal-900/90 rounded-3xl p-6 sm:p-10 flex flex-col justify-between">
+          {/* Right: Storybook Text Page */}
+          <article className="lg:col-span-7 cafe-card rounded-5xl p-6 sm:p-10 flex flex-col justify-between border-2 border-taro-200/70 shadow-cafe">
             <div className="space-y-6">
-              {/* Manuscript Header */}
-              <header className="space-y-2 border-b border-lavender-400/20 pb-5">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-widest text-lavender-400 uppercase">
-                    CHƯƠNG {activeChapterIndex + 1} / 03
-                  </span>
-                  <span className="text-xs font-display tracking-widest text-roseAccent-400 uppercase font-bold">
-                    SURI MUKEKI CHRONICLES
-                  </span>
+              {/* Header */}
+              <header className="space-y-1.5 border-b border-taro-100 pb-4">
+                <div className="flex items-center justify-between text-xs font-display font-bold text-taro-600 uppercase">
+                  <span>TRANG TRUYỆN 0{activeChapterIndex + 1} / 0{STORY_CHAPTERS.length}</span>
+                  <span className="text-berry-500">SURI MUKEKI STORYBOOK</span>
                 </div>
-                <h3 className="text-3xl sm:text-4xl font-gothic text-ivory-100 tracking-wide">
+                <h3 className="text-2xl sm:text-3xl font-kawaii font-bold text-chocolate-900">
                   {chapter.title}
                 </h3>
-                <p className="font-display text-xs tracking-widest text-lavender-300 uppercase">
+                <p className="font-display text-xs font-bold text-chocolate-500">
                   {chapter.subtitle}
                 </p>
               </header>
 
               {/* Lead Quote */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-plum-900/60 border-l-4 border-roseAccent-500 font-editorial text-base sm:text-lg italic text-ivory-200 leading-relaxed shadow-inner">
+              <div className="p-4 sm:p-5 rounded-3xl bg-pudding-100/70 border-l-4 border-pudding-400 font-story text-sm sm:text-base text-chocolate-800 leading-relaxed shadow-xs">
                 {chapter.leadQuote}
               </div>
 
-              {/* Narrative Prose */}
-              <div className="space-y-4 font-editorial text-base sm:text-lg text-ivory-300/90 leading-relaxed tracking-wide">
+              {/* Paragraphs */}
+              <div className="space-y-4 font-story text-sm sm:text-base text-chocolate-700 leading-relaxed">
                 {chapter.paragraphs.map((p, pIdx) => (
-                  <p key={pIdx} className="first-letter:text-2xl first-letter:font-bold first-letter:text-roseAccent-400">
+                  <p key={pIdx}>
                     {p}
                   </p>
                 ))}
               </div>
             </div>
 
-            {/* Manuscript Footer & Chapter Navigation */}
-            <footer className="pt-8 border-t border-lavender-400/20 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-xs font-display tracking-widest text-lavender-400 uppercase">
-                <span>CHƯƠNG TIẾP THEO: </span>
-                <span className="text-ivory-200 font-bold">
+            {/* Footer Navigation */}
+            <footer className="pt-6 border-t border-taro-100 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-xs font-display font-bold text-chocolate-500">
+                <span>TẬP TIẾP THEO: </span>
+                <span className="text-taro-700 font-extrabold">
                   {STORY_CHAPTERS[(activeChapterIndex + 1) % STORY_CHAPTERS.length].title}
                 </span>
               </div>
 
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2.5">
                 <button
                   onClick={handlePrev}
-                  className="p-2.5 rounded-full bg-charcoal-800 hover:bg-plum-800 border border-lavender-400/30 text-ivory-300 hover:text-white transition"
-                  aria-label="Chương trước"
+                  className="p-2 rounded-2xl bg-white border border-taro-200 text-chocolate-700 hover:text-taro-700 shadow-xs bubble-btn"
+                  aria-label="Tập trước"
                 >
                   <ChevronLeft size={18} />
                 </button>
-                <span className="font-mono text-xs text-lavender-300 font-bold px-2">
+                <span className="font-mono text-xs font-bold text-taro-700 px-2">
                   0{activeChapterIndex + 1} / 0{STORY_CHAPTERS.length}
                 </span>
                 <button
                   onClick={handleNext}
-                  className="p-2.5 rounded-full bg-charcoal-800 hover:bg-plum-800 border border-lavender-400/30 text-ivory-300 hover:text-white transition"
-                  aria-label="Chương tiếp theo"
+                  className="p-2 rounded-2xl bg-white border border-taro-200 text-chocolate-700 hover:text-taro-700 shadow-xs bubble-btn"
+                  aria-label="Tập tiếp theo"
                 >
                   <ChevronRight size={18} />
                 </button>
