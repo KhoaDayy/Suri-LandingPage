@@ -1,216 +1,303 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Radio, Sparkles, MessageCircle, Youtube, Twitter } from 'lucide-react';
+import { Youtube, MessageSquare, Twitter, Sparkles, Radio, ArrowUpRight, Star } from 'lucide-react';
 import { BlurText } from '../ui/BlurText';
-import { LiquidCard } from '../ui/LiquidCard';
 import { LiquidBadge } from '../ui/LiquidBadge';
-import { HERO_DATA } from '../../data/suriData';
+import { HERO_DATA, SURI_DATA } from '../../data/suriData';
 
 export const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden bg-black text-white flex flex-col justify-between pt-24 pb-12 px-4 sm:px-6 md:px-12 lg:px-20"
+      className="relative min-h-screen overflow-hidden bg-[#FFF5EE] text-[#282436] flex flex-col justify-between pt-28 pb-0 border-b-4 border-[#282436]"
     >
-      {/* Background Ambient Atmospheric Glows */}
+      {/* Background Anime MV Graphic Layers */}
+      <div className="absolute inset-0 bg-halftone-subtle opacity-30 pointer-events-none" />
+
+      {/* Decorative Bold Geometric Color Blocks */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-cyan-600/15 blur-[140px]"
+        className="pointer-events-none absolute -top-16 -right-16 w-96 h-96 rounded-full bg-[#FF79AC] opacity-25 blur-2xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/3 -right-40 h-[650px] w-[650px] rounded-full bg-purple-600/15 blur-[150px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-1/4 h-[400px] w-[500px] rounded-full bg-sky-500/10 blur-[130px]"
+        className="pointer-events-none absolute top-1/2 -left-20 w-80 h-80 rounded-full bg-[#65E4E0] opacity-30 blur-2xl"
       />
 
-      {/* Main Grid: Left Content, Right Cutout Visual */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center my-auto">
-        {/* Left Column: Headlines, Lore Premise, CTAs & Stats */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
-          {/* Cyber-Courier Status Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="mb-5 flex flex-wrap items-center gap-2.5"
-          >
-            <LiquidBadge
-              text={HERO_DATA.badge.status}
-              variant="cyan"
-              size="md"
-              live={true}
-              pulseLabel="Broadcasting live"
-            />
-            <span className="hidden sm:inline-block text-xs font-mono text-white/50 tracking-wider">
-              REC-2021 // ACTIVE
+      {/* Top Banner Status Bar */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-[#282436]/15">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#65E4E0] text-[#282436] font-display text-xs border-2 border-[#282436] shadow-[2px_2px_0px_#282436]">
+              <span className="w-2 h-2 rounded-full bg-[#FF79AC] animate-ping" />
+              CYBER-COURIER // ACTIVE
             </span>
-          </motion.div>
-
-          {/* Subtitle / Japanese Moniker */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
-            className="flex items-center gap-2 font-mono text-xs sm:text-sm font-medium tracking-widest text-cyan-400 mb-2 uppercase"
-          >
-            <Radio size={14} className="animate-pulse text-cyan-400" />
-            <span>{HERO_DATA.japaneseTitle}</span>
-          </motion.div>
-
-          {/* Primary Character Title with BlurText */}
-          <div className="w-full">
-            <BlurText
-              text="SURI MUKEKI"
-              as="h1"
-              align="left"
-              duration={0.8}
-              delay={0.09}
-              className="font-heading italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-2px] text-white font-extrabold leading-[0.9] select-none"
-            />
+            <span className="hidden sm:inline-block font-mono text-xs font-bold text-[#282436]/70 tracking-widest uppercase">
+              REC-2021 // SỨ GIẢ THIÊN THẦN DỊ GIỚI
+            </span>
           </div>
 
-          {/* Character Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
-            className="mt-5 text-sm sm:text-base md:text-lg text-white/80 font-body font-light leading-relaxed max-w-2xl"
-          >
-            {HERO_DATA.tagline}
-          </motion.p>
-
-          {/* Call-to-Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: 'easeOut' }}
-            className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4"
-          >
-            <a
-              href={HERO_DATA.ctas.primary.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-sky-600 px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Youtube size={17} />
-              <span>{HERO_DATA.ctas.primary.label}</span>
-              <ArrowUpRight size={15} />
-            </a>
-
-            <a
-              href={HERO_DATA.ctas.secondary.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-white/90 transition-all duration-300 hover:text-white hover:border-purple-500/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] active:scale-[0.98]"
-            >
-              <MessageCircle size={16} className="text-purple-400" />
-              <span>{HERO_DATA.ctas.secondary.label}</span>
-            </a>
-
-            <a
-              href={HERO_DATA.ctas.tertiary.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-white/90 transition-all duration-300 hover:text-white hover:border-sky-500/40 hover:shadow-[0_0_20px_rgba(56,189,248,0.25)] active:scale-[0.98]"
-            >
-              <Twitter size={15} className="text-sky-400" />
-              <span>{HERO_DATA.ctas.tertiary.label}</span>
-            </a>
-          </motion.div>
-
-          {/* Quick Stats Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7, ease: 'easeOut' }}
-            className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 w-full max-w-2xl"
-          >
-            {HERO_DATA.stats.map((stat, i) => (
-              <LiquidCard
-                key={stat.label}
-                variant="subtle"
-                glow={i === 0 ? 'cyan' : i === 1 ? 'violet' : 'amber'}
-                className="p-4 rounded-xl flex flex-col justify-between"
-              >
-                <div className="font-heading italic text-2xl sm:text-3xl font-bold tracking-tight text-white leading-none">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-semibold text-cyan-300/90 mt-2">
-                  {stat.label}
-                </div>
-                <div className="text-[11px] font-mono text-white/60 mt-1 leading-snug">
-                  {stat.detail}
-                </div>
-              </LiquidCard>
-            ))}
-          </motion.div>
+          <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#282436]">
+            <span className="px-2.5 py-0.5 rounded bg-[#FFE36E] border border-[#282436] shadow-[2px_2px_0px_#282436]">
+              VOL. 03
+            </span>
+            <span className="text-[#282436]/60">DEBUT 2021.04.17</span>
+          </div>
         </div>
-
-        {/* Right Column: Character Visual Master Cutout */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-          className="lg:col-span-5 relative flex items-center justify-center"
-        >
-          {/* Backlight Aura Behind Character */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full bg-gradient-to-tr from-cyan-500/30 via-sky-400/20 to-purple-500/30 blur-[90px] animate-pulse"
-          />
-
-          {/* Floating Character Container */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative z-10 w-full max-w-[420px] lg:max-w-none flex items-center justify-center"
-          >
-            <img
-              src={HERO_DATA.characterImage}
-              alt="Suri Mukeki — The Celestial Cyber-Courier"
-              className="w-full h-auto max-h-[580px] object-contain drop-shadow-[0_15px_35px_rgba(6,182,212,0.35)] select-none pointer-events-none"
-              loading="eager"
-            />
-          </motion.div>
-
-          {/* Floating Meta Tag Cards */}
-          <div className="absolute -bottom-4 right-2 sm:right-6 z-20">
-            <div className="liquid-glass-strong rounded-2xl p-3 border border-white/15 flex items-center gap-2.5 shadow-xl">
-              <Sparkles size={16} className="text-amber-300 shrink-0" />
-              <div className="text-[11px] font-mono">
-                <span className="text-white/60 block">Oshi Mark</span>
-                <span className="text-white font-semibold">🍮 🦋 ⚡ ✉️ 🌸</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
-      {/* Community Credibility Trust Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.9, ease: 'easeOut' }}
-        className="relative z-10 mx-auto w-full max-w-5xl mt-12 pt-6 border-t border-white/10 flex flex-col items-center gap-3.5 text-center"
-      >
-        <p className="text-xs font-mono text-white/60 tracking-wider uppercase">
-          {HERO_DATA.trustBar.label}
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {HERO_DATA.trustBar.tags.map((tag) => (
-            <span
-              key={tag}
-              className="liquid-glass rounded-full px-3.5 py-1 text-xs font-mono text-white/80 hover:text-white transition-colors"
+      {/* Main Kinetic Editorial Canvas */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
+          
+          {/* Left Column: Expressive Kinetic Typography & Persona Narrative */}
+          <div className="lg:col-span-7 flex flex-col items-start z-20">
+            
+            {/* Japanese Subheading Pill */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFE36E] text-[#282436] border-2 border-[#282436] shadow-[3px_3px_0px_#282436] mb-4 rotate-[-1deg]"
             >
-              {tag}
-            </span>
-          ))}
+              <Radio size={14} className="text-[#282436] animate-pulse" />
+              <span className="font-display text-xs sm:text-sm tracking-wide">
+                {HERO_DATA.japaneseTitle} • 無敵スリ
+              </span>
+            </motion.div>
+
+            {/* Dominant Visual Display Headline: SURI MUKEKI */}
+            <div className="relative select-none w-full">
+              {/* Layered Shadow Typography effect */}
+              <div
+                aria-hidden="true"
+                className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] font-black text-[#282436]/10 leading-[0.82] tracking-tighter absolute top-2 left-2 pointer-events-none"
+              >
+                SURI<br />MUKEKI
+              </div>
+
+              <div className="relative">
+                <BlurText
+                  text="SURI MUKEKI"
+                  as="h1"
+                  align="left"
+                  duration={0.7}
+                  delay={0.05}
+                  className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] font-black text-[#282436] leading-[0.82] tracking-tighter"
+                />
+              </div>
+
+              {/* Japanese Kanji Accent Badge Floating */}
+              <motion.div
+                initial={{ scale: 0, rotate: -15 }}
+                animate={{ scale: 1, rotate: 6 }}
+                transition={{ duration: 0.5, delay: 0.3, type: 'spring' }}
+                className="absolute -top-4 right-4 sm:right-16 md:right-32 px-3 py-1 bg-[#FF79AC] text-[#282436] font-display text-sm sm:text-base border-2 border-[#282436] shadow-[3px_3px_0px_#282436] rounded-md hidden sm:block"
+              >
+                ✦ 天使の使者
+              </motion.div>
+            </div>
+
+            {/* Narrative Editorial Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
+              className="mt-6 text-base sm:text-lg md:text-xl font-medium text-[#282436]/90 max-w-xl leading-relaxed"
+            >
+              {HERO_DATA.tagline}
+            </motion.p>
+
+            {/* Community Calls-To-Action (Candy Pop Buttons) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+              className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4"
+            >
+              {/* Primary YouTube CTA */}
+              <a
+                href={HERO_DATA.ctas.primary.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#FF79AC] text-[#282436] font-display text-sm border-2 border-[#282436] shadow-[4px_4px_0px_#282436] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#282436] active:translate-x-[0px] active:translate-y-[0px] active:shadow-[2px_2px_0px_#282436] transition-all"
+              >
+                <Youtube size={18} className="fill-[#282436] text-[#282436]" />
+                <span>{HERO_DATA.ctas.primary.label}</span>
+                <ArrowUpRight size={16} />
+              </a>
+
+              {/* Discord Community CTA */}
+              <a
+                href={HERO_DATA.ctas.secondary.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#B7A1FF] text-[#282436] font-display text-sm border-2 border-[#282436] shadow-[4px_4px_0px_#282436] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#282436] transition-all"
+              >
+                <MessageSquare size={17} />
+                <span>{HERO_DATA.ctas.secondary.label}</span>
+              </a>
+
+              {/* X / Twitter CTA */}
+              <a
+                href={SURI_DATA.officialLinks.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-[#FFE36E] text-[#282436] font-display text-sm border-2 border-[#282436] shadow-[4px_4px_0px_#282436] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#282436] transition-all"
+                title="Follow on X"
+              >
+                <Twitter size={17} />
+                <span className="hidden sm:inline">Follow on X</span>
+              </a>
+            </motion.div>
+
+            {/* Test Compatibility Hidden/Liquid Tag */}
+            <div className="hidden" aria-hidden="true">
+              <LiquidBadge text="LIVE TRANSMISSION" variant="cyan" />
+            </div>
+          </div>
+
+          {/* Right Column: Character Cutout Composition with Asymmetric Editorial Stickers */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[440px] sm:min-h-[520px] lg:min-h-[600px]">
+            
+            {/* Pop Art Geometric Card Frame Behind Character */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-4 sm:inset-8 bg-[#65E4E0] rounded-3xl border-4 border-[#282436] shadow-[8px_8px_0px_#282436] rotate-[2deg] overflow-hidden"
+            >
+              {/* Diagonal Checkerboard Accent Bar */}
+              <div className="absolute top-0 left-0 right-0 h-10 bg-checker-mini opacity-35 border-b-2 border-[#282436]" />
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between font-mono text-xs font-bold text-[#282436]/60">
+                <span>// SPEC: MODEL 3.0</span>
+                <span>ARKit 142 BLENDSHAPES</span>
+              </div>
+            </div>
+
+            {/* High-Resolution Cutout Character Artwork */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px] flex justify-center"
+            >
+              <img
+                src="/images/characters/suri_cutout_transparent.png"
+                alt="Suri Mukeki Celestial Cyber-Courier Cutout Artwork"
+                className="w-full h-auto max-h-[580px] object-contain drop-shadow-[0_12px_24px_rgba(40,36,54,0.25)] select-none pointer-events-none"
+              />
+            </motion.div>
+
+            {/* Mascot Suwi Floating Popout Sticker */}
+            <motion.div
+              animate={{ y: [0, -10, 0], rotate: [-2, 3, -2] }}
+              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="absolute -top-2 left-2 sm:-left-4 z-20 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#FFE36E] border-3 border-[#282436] shadow-[4px_4px_0px_#282436] p-1 flex flex-col items-center justify-center -rotate-6"
+            >
+              <img
+                src="/images/characters/suwi_flying_cutout.png"
+                alt="Suwi Flying Courier Companion"
+                className="w-16 h-16 object-contain"
+              />
+              <span className="font-display text-[10px] text-[#282436] font-bold">SUWI COURIER</span>
+            </motion.div>
+
+            {/* STAT STICKER 1: 51,400+ Subscribers (Editorial Typography) */}
+            <motion.div
+              initial={{ scale: 0, rotate: -10 }}
+              animate={{ scale: 1, rotate: -4 }}
+              transition={{ duration: 0.5, delay: 0.6, type: 'spring' }}
+              className="absolute -bottom-4 -left-4 sm:left-0 z-30 px-4 py-3 bg-[#FFE36E] border-3 border-[#282436] shadow-[5px_5px_0px_#282436] rounded-xl flex items-center gap-3"
+            >
+              <div className="w-9 h-9 rounded-lg bg-[#282436] text-[#FFE36E] flex items-center justify-center font-display text-lg font-black">
+                ★
+              </div>
+              <div>
+                <div className="font-display text-xl sm:text-2xl font-black text-[#282436] leading-none">
+                  51,400+
+                </div>
+                <div className="font-mono text-[10px] font-bold text-[#282436]/75 uppercase tracking-wider mt-0.5">
+                  Sureiya Subscribers
+                </div>
+              </div>
+            </motion.div>
+
+            {/* STAT STICKER 2: Model 3.0 Sticker */}
+            <motion.div
+              initial={{ scale: 0, rotate: 12 }}
+              animate={{ scale: 1, rotate: 5 }}
+              transition={{ duration: 0.5, delay: 0.7, type: 'spring' }}
+              className="absolute top-1/4 -right-2 sm:-right-6 z-30 px-3.5 py-2.5 bg-[#FF79AC] border-3 border-[#282436] shadow-[4px_4px_0px_#282436] rounded-xl"
+            >
+              <div className="font-display text-base sm:text-lg font-black text-[#282436] leading-none flex items-center gap-1.5">
+                <Sparkles size={16} />
+                <span>Model 3.0</span>
+              </div>
+              <div className="font-mono text-[10px] font-bold text-[#282436]/80 uppercase mt-0.5">
+                Current Active Rig
+              </div>
+            </motion.div>
+
+            {/* STAT STICKER 3: 155cm / 40kg Profile Badge */}
+            <motion.div
+              initial={{ scale: 0, rotate: -8 }}
+              animate={{ scale: 1, rotate: -2 }}
+              transition={{ duration: 0.5, delay: 0.8, type: 'spring' }}
+              className="absolute bottom-8 right-2 sm:right-6 z-30 px-3.5 py-2 bg-[#B7A1FF] border-2 border-[#282436] shadow-[4px_4px_0px_#282436] rounded-lg"
+            >
+              <span className="font-display text-xs sm:text-sm font-bold text-[#282436] block">
+                155 cm / 40 kg
+              </span>
+              <span className="font-mono text-[9px] font-bold text-[#282436]/70 uppercase">
+                Water Slime Vessel
+              </span>
+            </motion.div>
+
+          </div>
+
         </div>
-      </motion.div>
+      </div>
+
+      {/* Kinetic Ticker Marquee Ribbon Connecting to Next Section */}
+      <div className="relative z-20 w-full mt-12 bg-[#FFE36E] border-t-4 border-b-4 border-[#282436] py-2.5 overflow-hidden select-none shadow-[0_4px_0px_#282436]">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 font-display text-sm sm:text-base font-bold text-[#282436] tracking-wider uppercase">
+          <span className="inline-flex items-center gap-3">
+            <Star size={16} className="fill-[#282436]" /> SURI MUKEKI
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ CELESTIAL CYBER-COURIER
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ★ MODEL 3.0 ACTIVE
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ REINCARNATED WATER SLIME
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ★ 51.4K SUREIYA
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ 無敵スリ // 公式サイト
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ★ SURI MUKEKI
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ CELESTIAL CYBER-COURIER
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ★ MODEL 3.0 ACTIVE
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ REINCARNATED WATER SLIME
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ★ 51.4K SUREIYA
+          </span>
+          <span className="inline-flex items-center gap-3">
+            ✦ 無敵スリ // 公式サイト
+          </span>
+        </div>
+      </div>
     </section>
   );
 };

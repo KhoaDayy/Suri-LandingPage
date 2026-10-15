@@ -80,3 +80,120 @@ html, body {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* ==========================================================================
+   Candy Pop Anime × Japanese Motion Graphics Design System
+   ========================================================================== */
+
+/* Halftone Texture */
+.bg-halftone-subtle {
+  background-image: radial-gradient(#282436 12%, transparent 13%);
+  background-size: 14px 14px;
+}
+.bg-halftone-pink {
+  background-image: radial-gradient(#FF79AC 18%, transparent 19%);
+  background-size: 16px 16px;
+}
+.bg-halftone-cyan {
+  background-image: radial-gradient(#65E4E0 18%, transparent 19%);
+  background-size: 16px 16px;
+}
+
+/* Checkerboard Borders & Accent Strips */
+.bg-checker-mini {
+  background-image: 
+    linear-gradient(45deg, #282436 25%, transparent 25%), 
+    linear-gradient(-45deg, #282436 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #282436 75%), 
+    linear-gradient(-45deg, transparent 75%, #282436 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+}
+
+/* Diagonal Courier Tape */
+.bg-stripes-courier {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFE36E,
+    #FFE36E 10px,
+    #282436 10px,
+    #282436 20px
+  );
+}
+
+/* Kinetic Outline Typography */
+.text-stroke-ink {
+  -webkit-text-stroke: 2px #282436;
+}
+.text-stroke-thick {
+  -webkit-text-stroke: 3px #282436;
+}
+.text-stroke-white {
+  -webkit-text-stroke: 2px #FFF5EE;
+}
+.text-stroke-pink {
+  -webkit-text-stroke: 2px #FF79AC;
+}
+.text-stroke-cyan {
+  -webkit-text-stroke: 2px #65E4E0;
+}
+
+/* Marquee / Kinetic Ticker Ribbons */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 14s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-fast,
+  .animate-marquee-reverse {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Neo-Pop Offset Box Shadows & Stickers */
+.pop-card {
+  background: #FFF5EE;
+  color: #282436;
+  border: 2px solid #282436;
+  box-shadow: 4px 4px 0px #282436;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pop-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #282436;
+}
+
+.pop-badge {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  border: 2px solid #282436;
+  box-shadow: 2px 2px 0px #282436;
+}
+

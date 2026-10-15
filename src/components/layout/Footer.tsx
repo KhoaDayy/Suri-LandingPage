@@ -9,11 +9,9 @@ import {
   ExternalLink,
   Heart,
   ArrowUp,
-  ShieldCheck,
   Radio,
 } from 'lucide-react';
 import { SURI_DATA, SOCIAL_LINKS, NAV_LINKS, CREDITS_DATA } from '../../data/suriData';
-import { LiquidCard } from '../ui/LiquidCard';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -21,35 +19,32 @@ export const Footer: React.FC = () => {
   };
 
   const socialIcons: Record<string, React.ReactNode> = {
-    YouTube: <Youtube size={18} className="text-red-500" />,
-    'X (Twitter)': <Twitter size={18} className="text-sky-400" />,
-    Discord: <MessageSquare size={18} className="text-indigo-400" />,
-    Carrd: <Globe size={18} className="text-cyan-400" />,
-    Facebook: <Facebook size={18} className="text-blue-500" />,
-    Marshmallow: <Sparkles size={18} className="text-pink-400" />,
+    YouTube: <Youtube size={18} className="fill-[#282436] text-[#282436]" />,
+    'X (Twitter)': <Twitter size={18} className="text-[#282436]" />,
+    Discord: <MessageSquare size={18} className="text-[#282436]" />,
+    Carrd: <Globe size={18} className="text-[#282436]" />,
+    Facebook: <Facebook size={18} className="text-[#282436]" />,
+    Marshmallow: <Sparkles size={18} className="text-[#282436]" />,
   };
 
   const officialHashtags = [
-    { tag: '#SuriMukeki', label: 'General / Thông tin chung', category: 'Official' },
-    { tag: '#Suristream', label: 'Livestreams / Phát sóng', category: 'Broadcast' },
-    { tag: '#SuriArt', label: 'Fanart Showcase / Tranh vẽ', category: 'Creative' },
-    { tag: '#Sureiya', label: 'Fanbase & Community / Người hâm mộ', category: 'Community' },
+    { tag: '#SuriMukeki', label: 'General / Thông tin chung', category: 'Official', bg: 'bg-[#FF79AC]' },
+    { tag: '#Suristream', label: 'Livestreams / Phát sóng', category: 'Broadcast', bg: 'bg-[#65E4E0]' },
+    { tag: '#SuriArt', label: 'Fanart Showcase / Tranh vẽ', category: 'Creative', bg: 'bg-[#FFE36E]' },
+    { tag: '#Sureiya', label: 'Fanbase & Community / Người hâm mộ', category: 'Community', bg: 'bg-[#B7A1FF]' },
   ];
 
   return (
-    <footer className="relative bg-black border-t border-white/10 overflow-hidden text-white pt-16 pb-12">
-      {/* Ambient background glows */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-t from-cyan-500/10 via-purple-500/5 to-transparent blur-3xl opacity-60"
-      />
+    <footer className="relative bg-[#282436] text-[#FFF5EE] overflow-hidden pt-20 pb-14 border-t-4 border-[#282436]">
+      {/* Background Halftone Pattern */}
+      <div className="absolute inset-0 bg-halftone-pink opacity-15 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        {/* Top Tier: Identity, Quick Links & Scroll to Top */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-10 border-b border-white/10">
-          {/* Brand Identity */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 relative z-10">
+        
+        {/* Top Tier: Giant Brand Headline, Quick Navigation & Scroll to Top */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-10 border-b-2 border-white/20">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl liquid-glass-strong border border-white/20 p-1 flex items-center justify-center shrink-0 shadow-lg shadow-cyan-500/10">
+            <div className="w-16 h-16 rounded-2xl bg-[#65E4E0] border-3 border-[#FFF5EE] p-1 flex items-center justify-center shrink-0 shadow-[4px_4px_0px_#FF79AC]">
               <img
                 src="/images/icons/logo_suri.png"
                 alt="Suri Mukeki Logo"
@@ -57,114 +52,107 @@ export const Footer: React.FC = () => {
               />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-heading italic font-bold text-2xl text-white tracking-wide">
+              <div className="flex items-center gap-3">
+                <h3 className="font-display font-black text-3xl sm:text-4xl text-[#FFE36E] tracking-tight">
                   SURI MUKEKI
                 </h3>
-                <span className="text-xs font-mono text-cyan-400 font-bold px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30">
+                <span className="font-display text-xs text-[#282436] font-bold px-2.5 py-1 rounded-md bg-[#FF79AC] border border-white">
                   無敵スリ
                 </span>
               </div>
-              <p className="text-xs font-mono text-white/60 mt-1 max-w-md">
-                {SURI_DATA.alias} • Proudly independent Vietnamese VTuber connecting hearts worldwide.
+              <p className="font-mono text-xs text-white/70 mt-1 max-w-md">
+                {SURI_DATA.alias} • Independent Virtual YouTuber connecting hearts worldwide with sweet energy.
               </p>
             </div>
           </div>
 
-          {/* Navigation Anchor Links & Scroll to top */}
+          {/* Navigation Links & Return To Top Rocket Button */}
           <div className="flex flex-wrap items-center gap-3">
-            <nav className="flex flex-wrap items-center gap-1 font-mono text-xs" aria-label="Footer Navigation">
+            <nav className="flex flex-wrap items-center gap-2 font-display text-xs" aria-label="Footer Navigation">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                  className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-[#FFE36E] hover:text-[#282436] transition-colors border border-white/20"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
+
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-full liquid-glass border border-white/10 text-white/70 hover:text-cyan-400 hover:border-cyan-400/50 transition-all hover:scale-105"
+              className="p-3 rounded-xl bg-[#FFE36E] text-[#282436] border-2 border-[#FFF5EE] shadow-[3px_3px_0px_#FF79AC] hover:scale-105 transition-all cursor-pointer"
               aria-label="Scroll to top of page"
               title="Return to top"
             >
-              <ArrowUp size={16} />
+              <ArrowUp size={18} />
             </button>
           </div>
         </div>
 
-        {/* Social Platforms Matrix */}
+        {/* Official Channels & Community Matrix */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-              <Radio size={14} />
-              <span>Official Channels & Community Matrix</span>
-            </h4>
-            <span className="text-[11px] font-mono text-white/40">Verified Profiles</span>
+            <div className="flex items-center gap-2 font-display text-sm font-bold text-[#65E4E0]">
+              <Radio size={16} />
+              <span>OFFICIAL CHANNELS & COMMUNITY MATRIX</span>
+            </div>
+            <span className="font-mono text-xs text-white/50">Verified Profiles</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {SOCIAL_LINKS.map((social) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            {SOCIAL_LINKS.map((link) => (
               <a
-                key={social.platform}
-                href={social.url}
+                key={link.platform}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block"
-                title={`${social.platform} - ${social.label}`}
+                title={`${link.platform} - ${link.label}`}
               >
-                <LiquidCard
-                  variant="subtle"
-                  glow="none"
-                  hoverEffect={true}
-                  className="p-4 border border-white/10 hover:border-cyan-400/40 transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                        {socialIcons[social.platform] || <ExternalLink size={16} />}
+                <div className="p-4 rounded-xl bg-[#FFF5EE] text-[#282436] border-2 border-[#282436] shadow-[4px_4px_0px_#FFE36E] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] group-hover:shadow-[6px_6px_0px_#FF79AC] transition-all flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FFE36E] border-2 border-[#282436] flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
+                      {socialIcons[link.platform] || <Sparkles size={18} />}
+                    </div>
+                    <div>
+                      <div className="font-display font-bold text-sm text-[#282436] group-hover:text-[#FF79AC] transition-colors">
+                        {link.platform}
                       </div>
-                      <div>
-                        <div className="font-mono font-bold text-xs text-white group-hover:text-cyan-300 transition-colors">
-                          {social.platform}
-                        </div>
-                        <div className="font-mono text-[11px] text-white/50">
-                          {social.handle}
-                        </div>
+                      <div className="font-mono text-xs text-[#282436]/60">
+                        {link.handle}
                       </div>
                     </div>
-                    <ExternalLink size={14} className="text-white/30 group-hover:text-cyan-400 transition-colors" />
                   </div>
-                </LiquidCard>
+                  <ExternalLink size={16} className="text-[#282436]/40 group-hover:text-[#282436] transition-colors" />
+                </div>
               </a>
             ))}
           </div>
         </div>
 
         {/* Official Community Hashtags */}
-        <div className="liquid-glass rounded-2xl border border-white/10 p-5">
+        <div className="p-6 rounded-2xl bg-[#FFF5EE] text-[#282436] border-3 border-[#282436] shadow-[5px_5px_0px_#FF79AC]">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-xs font-mono font-bold text-white uppercase tracking-wider block">
-                Official Community Hashtags
+            <div>
+              <span className="font-display text-sm font-black text-[#282436] block">
+                ★ OFFICIAL COMMUNITY HASHTAGS
               </span>
-              <p className="text-[11px] font-mono text-white/50">
-                Use these tags across Twitter/X, YouTube, and Facebook to share creations and stream highlights.
+              <p className="font-mono text-xs text-[#282436]/70 mt-0.5">
+                Sử dụng các hashtag sau trên X (Twitter), YouTube và cộng đồng để chia sẻ fanart và khoảnh khắc stream.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+
+            <div className="flex flex-wrap items-center gap-2.5">
               {officialHashtags.map((item) => (
                 <div
                   key={item.tag}
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-colors group cursor-default"
+                  className={`px-3.5 py-1.5 rounded-xl ${item.bg} text-[#282436] border-2 border-[#282436] shadow-[2px_2px_0px_#282436] font-display text-xs font-bold flex items-center gap-2`}
                 >
-                  <span className="font-mono font-bold text-xs text-cyan-300 group-hover:text-white transition-colors">
-                    {item.tag}
-                  </span>
-                  <span className="text-[10px] font-mono text-white/40 hidden sm:inline">
-                    {item.category}
+                  <span>{item.tag}</span>
+                  <span className="font-mono text-[10px] text-[#282436]/60 hidden sm:inline">
+                    • {item.category}
                   </span>
                 </div>
               ))}
@@ -172,44 +160,38 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Creator Artisan Credits */}
+        {/* Artisan Design & Rigging Credits */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-purple-400 flex items-center gap-2">
-              <Sparkles size={14} />
-              <span>Artisan Design & Kinematics Credits</span>
-            </h4>
-            <span className="text-[11px] font-mono text-white/40">Model 3.0 & Genesis Rigs</span>
+            <div className="flex items-center gap-2 font-display text-sm font-bold text-[#FFE36E]">
+              <Sparkles size={16} />
+              <span>ARTISAN DESIGN & KINEMATICS CREDITS</span>
+            </div>
+            <span className="font-mono text-xs text-white/50">Model 3.0 & Genesis Rigs</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {CREDITS_DATA.map((group) => (
-              <LiquidCard
-                key={group.role}
-                variant="subtle"
-                glow="none"
-                className="p-4 border border-white/10"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            {CREDITS_DATA.map((credit) => (
+              <div
+                key={credit.role}
+                className="p-4 rounded-xl bg-white/10 border border-white/20"
               >
-                <div className="border-b border-white/10 pb-2 mb-2.5">
-                  <span className="font-mono font-bold text-xs text-white block">
-                    {group.role}
-                  </span>
-                  <span className="font-mono text-[10px] text-white/50 block">
-                    {group.label}
-                  </span>
+                <div className="border-b border-white/10 pb-2 mb-2 font-mono">
+                  <span className="font-bold text-xs text-[#FFE36E] block">{credit.role}</span>
+                  <span className="text-[10px] text-white/50 block">{credit.label}</span>
                 </div>
-                <ul className="space-y-2 text-xs font-mono">
-                  {group.people.map((person) => (
+                <ul className="space-y-1.5 font-mono text-xs">
+                  {credit.people.map((person) => (
                     <li key={person.name} className="flex flex-col">
                       {person.url ? (
                         <a
                           href={person.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-cyan-300 hover:text-cyan-200 inline-flex items-center gap-1 font-semibold transition-colors"
+                          className="text-[#65E4E0] hover:text-[#FFE36E] inline-flex items-center gap-1 font-semibold transition-colors"
                         >
                           <span>{person.name}</span>
-                          <ExternalLink size={11} />
+                          <ExternalLink size={10} />
                         </a>
                       ) : (
                         <span className="text-white/80 font-medium">{person.name}</span>
@@ -220,25 +202,22 @@ export const Footer: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </LiquidCard>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Legal, Fan Tribute & Copyright Disclaimer */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-white/50 gap-4 text-center md:text-left">
+        {/* Closing Copyright & Disclaimer */}
+        <div className="pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between text-xs font-mono text-white/60 gap-4 text-center md:text-left">
           <div className="flex items-center gap-2">
-            <Heart size={14} className="text-red-500 fill-red-500 shrink-0" />
+            <Heart size={14} className="text-[#FF79AC] fill-[#FF79AC]" />
             <span>TRI ÂN & LƯU TRỮ VỀ VTUBER SURI MUKEKI • FAN-CREATED ARCHIVE</span>
           </div>
-          <div className="flex items-center gap-2">
-            <ShieldCheck size={14} className="text-cyan-400 shrink-0" />
-            <span>ART, CHARACTER & MUSIC BELONG TO SURI MUKEKI & RESPECTIVE CREATORS</span>
-          </div>
           <div>
-            <span>© 2021–2026 Suri Mukeki Project. Independent VTuber Showcase.</span>
+            <span>© 2021–2026 Suri Mukeki Project. All art, character & music belong to Suri Mukeki & respective creators.</span>
           </div>
         </div>
+
       </div>
     </footer>
   );

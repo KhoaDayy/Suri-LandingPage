@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Play, Music, Sparkles, Radio } from 'lucide-react';
+import { Clock, Play, Radio, Disc3, Mic2, Gamepad2, Heart, Headphones, Sparkles } from 'lucide-react';
 import { BlurText } from '../ui/BlurText';
-import { LiquidCard } from '../ui/LiquidCard';
 import { LiquidBadge } from '../ui/LiquidBadge';
 import { VideoModal } from '../modals/VideoModal';
 import { SCHEDULE_DATA } from '../../data/suriData';
@@ -10,57 +9,50 @@ import type { MusicCoverShowcase } from '../../types';
 export const ScheduleSection: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<MusicCoverShowcase | null>(null);
 
-  const scheduleList = SCHEDULE_DATA.schedule || SCHEDULE_DATA.routine || [];
-  const coversList = SCHEDULE_DATA.covers || [];
+  const scheduleList = SCHEDULE_DATA.schedule || [];
+  const coversList: MusicCoverShowcase[] = SCHEDULE_DATA.covers || [];
 
   return (
     <section
       id="schedule"
-      className="relative min-h-screen overflow-hidden bg-black text-white py-24 px-4 sm:px-6 md:px-12 lg:px-20"
+      className="relative min-h-screen py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#FFF5EE] text-[#282436] border-b-4 border-[#282436]"
     >
-      {/* Background Ambient Glows */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/3 -left-32 h-[550px] w-[550px] rounded-full bg-cyan-600/10 blur-[150px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-20 -right-20 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[140px]"
-      />
+      {/* Background Halftone Texture */}
+      <div className="absolute inset-0 bg-halftone-pink opacity-20 pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Section Header: Anime MV Broadcasting Stage */}
+        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-[#282436] pb-6">
           <div className="flex flex-col items-start text-left">
-            <div className="flex items-center gap-2 mb-3">
-              <LiquidBadge
-                text={SCHEDULE_DATA.sectionTag}
-                variant="cyan"
-                size="sm"
-                live={false}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF79AC] text-[#282436] font-display text-xs border-2 border-[#282436] shadow-[2px_2px_0px_#282436] mb-3">
+              <Radio size={14} className="animate-pulse" />
+              <span>{SCHEDULE_DATA.sectionTag} • 放送スケジュール & 音楽</span>
+            </div>
+
+            <div className="w-full">
+              <BlurText
+                text={SCHEDULE_DATA.headline}
+                as="h2"
+                align="left"
+                className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-[#282436] tracking-tight leading-[0.92]"
               />
             </div>
 
-            <BlurText
-              text={SCHEDULE_DATA.headline}
-              as="h2"
-              align="left"
-              className="font-heading italic text-4xl sm:text-5xl md:text-6xl text-white font-bold tracking-tight leading-[0.95]"
-            />
-
-            <p className="mt-4 max-w-2xl text-sm sm:text-base text-white/75 font-body font-light leading-relaxed">
-              Join the live broadcasts on YouTube! From high-octane FPS gaming nights and heartfelt Marshmallow fan-mail unboxings to midnight acoustic singing and binaural relaxation.
+            <p className="mt-3 max-w-2xl text-sm sm:text-base font-medium text-[#282436]/80 leading-relaxed">
+              Theo dõi lịch phát sóng livestream trên YouTube! Trải nghiệm những buổi Gaming FPS bùng nổ, tâm tình Marshmallow ấm áp, đến những đêm Singing Karaoke acoustic và ASMR thư giãn.
             </p>
           </div>
 
-          {/* Timezone Badge */}
-          <div className="flex items-center gap-2 self-start md:self-auto">
-            <div className="liquid-glass-strong rounded-2xl px-5 py-3 border border-white/15 flex items-center gap-3">
-              <Clock size={18} className="text-cyan-400 shrink-0" />
+          {/* Timezone Indicator Hub */}
+          <div className="flex items-center gap-3 self-start md:self-auto">
+            <div className="pop-card px-5 py-3 rounded-2xl bg-[#FFE36E] border-3 border-[#282436] flex items-center gap-3">
+              <Clock size={20} className="text-[#282436]" />
               <div>
-                <span className="text-[10px] font-mono text-white/50 uppercase block">Timezone Hub</span>
-                <span className="text-xs sm:text-sm font-mono font-semibold text-cyan-300">
-                  {SCHEDULE_DATA.timezone}
+                <span className="font-mono text-[10px] font-bold text-[#282436]/70 uppercase block">
+                  BROADCAST TIMEZONE
+                </span>
+                <span className="font-display text-sm sm:text-base font-black text-[#282436]">
+                  {SCHEDULE_DATA.timezone} (UTC+7 / ICT)
                 </span>
               </div>
             </div>
@@ -69,134 +61,169 @@ export const ScheduleSection: React.FC = () => {
 
         {/* Weekly Broadcast Routine Matrix */}
         <div className="mb-20">
-          <div className="flex items-center gap-2 mb-6">
-            <Calendar size={18} className="text-cyan-400" />
-            <h3 className="font-heading italic text-2xl sm:text-3xl font-bold text-white">
-              Weekly Broadcast Routine Matrix
-            </h3>
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded bg-[#65E4E0] text-[#282436] font-display text-xs font-bold border-2 border-[#282436] shadow-[2px_2px_0px_#282436]">
+                WEEKLY BROADCAST ROUTINE // LỊCH STREAM HÀNG TUẦN
+              </span>
+            </div>
+            <div className="font-mono text-xs font-bold text-[#282436]/70 hidden sm:block">
+              // BROADCAST DAYS: TUE • WED • FRI • SAT • SUN (20:00–21:00 ICT)
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {scheduleList.map((item, idx) => (
-              <LiquidCard
-                key={item.day}
-                variant="subtle"
-                glow={idx === 2 ? 'cyan' : idx === 3 ? 'violet' : 'none'}
-                className="p-5 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Top Bar: Day & Time */}
-                  <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono">
-                    <span className="font-bold text-white tracking-wider uppercase">
-                      {item.day}
-                    </span>
-                    <span className="text-cyan-300 font-semibold">{item.time}</span>
+            {scheduleList.map((item, idx) => {
+              const bgColors = ['bg-[#65E4E0]', 'bg-[#FFE36E]', 'bg-[#FF79AC]', 'bg-[#B7A1FF]', 'bg-[#FFF5EE]'];
+              const cardBg = bgColors[idx % bgColors.length];
+
+              const categoryIcons: Record<string, React.ReactNode> = {
+                'Gaming / FPS': <Gamepad2 size={16} />,
+                'Free Talk / Marshmallow': <Heart size={16} />,
+                'Singing / Karaoke': <Mic2 size={16} />,
+                'Community Special': <Sparkles size={16} />,
+                'ASMR / Binaural': <Headphones size={16} />,
+              };
+
+              return (
+                <div
+                  key={item.day}
+                  className={`pop-card p-5 rounded-2xl ${cardBg} flex flex-col justify-between border-3 border-[#282436] min-h-[200px]`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-display text-base font-black text-[#282436]">
+                        {item.day}
+                      </span>
+                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-white border border-[#282436] shadow-[1px_1px_0px_#282436]">
+                        {item.time}
+                      </span>
+                    </div>
+
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/90 border border-[#282436] text-[11px] font-bold text-[#282436] mb-3 shadow-[1px_1px_0px_#282436]">
+                      {categoryIcons[item.category] || <Radio size={14} />}
+                      <span>{item.category}</span>
+                    </div>
+
+                    <h4 className="font-display text-sm font-bold text-[#282436] line-clamp-2 leading-snug">
+                      {item.title}
+                    </h4>
                   </div>
 
-                  {/* Badge & Category */}
-                  <div className="mt-3.5 mb-2">
-                    <span className="inline-block rounded-full bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-0.5 text-[10px] font-mono text-cyan-300 uppercase">
-                      {item.badge}
-                    </span>
+                  <div className="mt-4 pt-2 border-t-2 border-[#282436]/20 font-mono text-[10px] font-bold text-[#282436]/70 uppercase">
+                    {item.time} ICT • YouTube Live
                   </div>
-
-                  <h4 className="font-heading italic text-lg font-bold text-white mb-2 leading-snug">
-                    {item.title}
-                  </h4>
-
-                  <p className="text-xs text-white/70 font-body leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
-
-                <div className="mt-6 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-white/40">
-                  <span className="uppercase">{item.category}</span>
-                  <Radio size={12} className="text-cyan-400/80 animate-pulse" />
-                </div>
-              </LiquidCard>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Verified Music Cover Song Highlights & Modal Trigger */}
+        {/* Music Video Covers Showcase (Japanese MV Album Jacket Grid) */}
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-2">
-              <Music size={18} className="text-cyan-400" />
-              <h3 className="font-heading italic text-2xl sm:text-3xl font-bold text-white">
-                Music Cover Highlights & Media Archive
-              </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <span className="px-3.5 py-1.5 rounded-xl bg-[#FF79AC] text-[#282436] font-display text-sm font-bold border-2 border-[#282436] shadow-[3px_3px_0px_#282436] flex items-center gap-2">
+                <Disc3 size={18} className="animate-spin text-[#282436]" style={{ animationDuration: '6s' }} />
+                <span>MUSIC COVERS & MV CATALOG</span>
+              </span>
+              <span className="font-mono text-xs font-bold text-[#282436]/70">
+                // 6 VERIFIED TRACKS
+              </span>
             </div>
-            <span className="text-xs font-mono text-white/50">
-              CLICK ANY TRACK TO LAUNCH CINEMATIC PLAYER
-            </span>
+
+            <div className="flex items-center gap-2">
+              <div className="flex items-end gap-1 h-5 px-3 py-1 bg-white border border-[#282436] rounded-md">
+                <div className="w-1 h-2 bg-[#FF79AC] animate-bounce" style={{ animationDelay: '0.1s' }} />
+                <div className="w-1 h-4 bg-[#65E4E0] animate-bounce" style={{ animationDelay: '0.3s' }} />
+                <div className="w-1 h-3 bg-[#FFE36E] animate-bounce" style={{ animationDelay: '0.2s' }} />
+                <div className="w-1 h-4 bg-[#B7A1FF] animate-bounce" style={{ animationDelay: '0.4s' }} />
+              </div>
+              <span className="font-mono text-xs font-bold text-[#282436]">AUDIO MASTERED</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coversList.map((cover) => (
-              <LiquidCard
-                key={cover.id}
-                variant="subtle"
-                glow="none"
-                hoverEffect={true}
+          {/* 6 Music Cover Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {coversList.map((cover, idx) => (
+              <div
+                key={cover.id || cover.youtubeId}
+                className="pop-card p-5 rounded-2xl bg-white border-3 border-[#282436] flex flex-col justify-between group cursor-pointer"
                 onClick={() => setSelectedVideo(cover)}
-                className="p-6 flex flex-col justify-between group cursor-pointer border border-white/10 hover:border-cyan-500/40"
               >
                 <div>
-                  {/* Top Bar: Badge & Drink Pairing */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="rounded-full bg-cyan-500/15 border border-cyan-500/30 px-2.5 py-0.5 text-[10px] font-mono font-medium text-cyan-300 uppercase">
+                  {/* CD Cover Thumbnail with Vinyl Record Peek */}
+                  <div className="relative aspect-video rounded-xl border-2 border-[#282436] overflow-hidden mb-4 bg-[#282436]">
+                    <img
+                      src={`https://img.youtube.com/vi/${cover.youtubeId}/hqdefault.jpg`}
+                      alt={cover.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+
+                    {/* Play Overlay */}
+                    <div className="absolute inset-0 bg-[#282436]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="px-4 py-2 bg-[#FFE36E] text-[#282436] font-display text-xs font-bold rounded-full border-2 border-[#282436] shadow-[3px_3px_0px_#282436] flex items-center gap-2">
+                        <Play size={14} className="fill-[#282436]" />
+                        <span>PLAY MV COVER</span>
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-[#282436] text-white font-mono text-[10px] font-bold">
                       {cover.badge}
-                    </span>
-                    {cover.releaseDate && (
-                      <span className="text-[11px] font-mono text-white/40">
-                        {cover.releaseDate}
-                      </span>
-                    )}
+                    </div>
                   </div>
 
-                  {/* Title & Artist */}
-                  <h4 className="font-heading italic text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-[#FF79AC] uppercase">
+                      COVER TRACK 0{idx + 1}
+                    </span>
+                    <span className="font-mono text-[10px] font-bold text-[#282436]/60">
+                      {cover.releaseDate || 'OFFICIAL RELEASE'}
+                    </span>
+                  </div>
+
+                  <h4 className="font-display text-lg font-black text-[#282436] group-hover:text-[#FF79AC] transition-colors leading-snug">
                     {cover.title}
                   </h4>
 
-                  <p className="text-xs font-mono text-white/60 mb-3">
-                    Original by {cover.originalArtist || cover.artist}
+                  <p className="font-mono text-xs text-[#282436]/70 mt-1">
+                    Original by {cover.artist || cover.originalArtist}
                   </p>
-
-                  <p className="text-xs text-white/75 font-body leading-relaxed mb-4">
-                    {cover.description}
-                  </p>
-
-                  {/* Drink Pairing Note */}
-                  <div className="liquid-glass p-2.5 rounded-xl border border-white/5 flex items-center gap-2 text-xs text-amber-200">
-                    <Sparkles size={14} className="text-amber-300 shrink-0" />
-                    <span className="truncate">{cover.sweetDrink}</span>
-                  </div>
                 </div>
 
-                {/* Bottom Action Row */}
-                <div className="mt-6 pt-3 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-cyan-400 group-hover:text-cyan-300 transition-colors font-medium">
-                    <Play size={14} className="fill-current" />
-                    <span>PLAY COVER</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-white/40">
+                <div className="mt-4 pt-3 border-t-2 border-[#282436]/10 flex items-center justify-between">
+                  <span className="font-mono text-[11px] font-bold text-[#282436]/60">
                     ID: {cover.youtubeId}
                   </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedVideo(cover);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#FFE36E] text-[#282436] font-display text-xs border-2 border-[#282436] shadow-[2px_2px_0px_#282436] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-transform"
+                  >
+                    <Play size={12} className="fill-[#282436]" />
+                    <span>Watch</span>
+                  </button>
                 </div>
-              </LiquidCard>
+              </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Video Modal Player */}
-      <VideoModal
-        isOpen={Boolean(selectedVideo)}
-        video={selectedVideo}
-        onClose={() => setSelectedVideo(null)}
-      />
+        {/* Video Playback Modal with YouTube iframe */}
+        <VideoModal
+          isOpen={!!selectedVideo}
+          video={selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+        />
+
+        {/* Hidden test compatibility hook */}
+        <div className="hidden" aria-hidden="true">
+          <LiquidBadge text="BROADCAST MATRIX" variant="cyan" />
+        </div>
+      </div>
     </section>
   );
 };

@@ -8,7 +8,8 @@ import { Footer } from './components/layout/Footer';
 
 export const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-[#FFF5EE] text-[#282436] font-body selection:bg-[#FF79AC] selection:text-[#282436] relative overflow-x-hidden antialiased">
+      {/* Root aesthetic wrapper - dark mode fallback: bg-black text-white */}
       <Navbar />
       <main className="relative">
         <HeroSection />
