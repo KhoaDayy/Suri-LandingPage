@@ -122,7 +122,7 @@ Clone the repository and install dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Hasukatsu/Suri-LandingPage.git
+git clone https://github.com/KhoaDayy/Suri-LandingPage.git
 cd Suri-LandingPage
 
 # Install dependencies using pnpm
@@ -285,7 +285,7 @@ Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) for details on code style, comm
 
 ### Maintainers
 
-- **Project Author & Maintainer**: [Hasukatsu](https://github.com/Hasukatsu)
+- **Project Author & Maintainer**: [KhoaDayy](https://github.com/KhoaDayy)
 - **Community**: The Sureiya VTuber Fan Community
 
 ---

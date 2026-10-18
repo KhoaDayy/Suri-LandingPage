@@ -142,11 +142,6 @@ export interface ModelSpecsCreditsData {
   telemetry?: ModelTelemetrySpec[];
   features: ModelFeature[];
   credits: ArtisanCredit[];
-  glassesToggle?: {
-    withGlasses: string;
-    noGlasses: string;
-    label: string;
-  };
   costumeSheet?: {
     image: string;
     title: string;

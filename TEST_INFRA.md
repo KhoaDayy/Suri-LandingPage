@@ -15,7 +15,7 @@ The testing framework provides a zero-dependency, automated 4-tier opaque-box E2
 1. **Opaque-Box Contract Assertions**: Directly tests exported data schemas, HTML metadata, CSS utility classes, component mount targets, and DOM container IDs.
 2. **Strict Negative Invariant Checking**: Enforces 0 remnant agency strings across active code (`src/` and `index.html`).
 3. **Asset Resolution & File Integrity**: Verifies 100% of referenced image assets exist on disk in `public/images/`, are non-empty, and adhere to expected magic bytes (PNG/WebP).
-4. **State Machine & Cross-Feature Verification**: Validates navigation anchor targets, mobile drawer state transitions, Model 3.0 glasses toggle, Suri/Irus dual persona toggle, and video modal triggers.
+4. **State Machine & Cross-Feature Verification**: Validates navigation anchor targets, mobile drawer state transitions, Model evolution lineage, Suri/Irus dual persona toggle, and video modal triggers.
 5. **Real-World Build & Layout Verification via Chrome DevTools Protocol (CDP)**:
    - Spawns headless Chrome against a local static preview server.
    - Measures true rendered layout metrics (`scrollWidth <= clientWidth`, bounding client rects) at desktop (`1920x1080`) and mobile (`390x844`).

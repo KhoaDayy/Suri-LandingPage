@@ -8,7 +8,7 @@
  *
  * Tier 1: Feature Coverage (>=5 tests per feature: Hero, Lore, Specs, Schedule, Nav, Branding, Assets)
  * Tier 2: Boundary & Corner Cases (Remnant agency grep, asset resolution, null safety, broken links)
- * Tier 3: Cross-Feature Combinations (Nav anchor mapping, mobile drawer, glasses toggle, persona toggle, video modal)
+ * Tier 3: Cross-Feature Combinations (Nav anchor mapping, mobile drawer, zero-glasses invariant, persona toggle, video modal)
  * Tier 4: Real-World Scenarios & Build Verification (pnpm build, desktop 1920x1080 layout, mobile 390x844 layout)
  *
  * Execution:
