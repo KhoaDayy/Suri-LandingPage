@@ -28,7 +28,6 @@ interface ModelOption {
   year: string;
   debutDate: string;
   image: string;
-  glassesOffImage?: string;
   modelType: string;
   creators: ModelCreator[];
   description: string;
@@ -96,7 +95,6 @@ const MODEL_OPTIONS: Record<ModelViewKey, ModelOption> = {
       year: '2023',
       debutDate: '21/01/2023',
       image: '/images/characters/suri_model3.webp',
-      glassesOffImage: '/images/characters/suri_model3_noglasses.webp',
       modelType: 'Live2D Cubism Model (Hoàng gia Gothic)',
       creators: [
         { role: 'Minh họa chính (Papa)', name: 'T_blence (Turbulence)' },
@@ -161,16 +159,11 @@ const MODEL_OPTIONS: Record<ModelViewKey, ModelOption> = {
 export const SpecsSection: React.FC = () => {
   // Default to Model 3D as it is the primary model currently used on stream!
   const [selectedModel, setSelectedModel] = useState<ModelViewKey>('model3d');
-  const [showGlasses, setShowGlasses] = useState<boolean>(true);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; title: string; desc: string } | null>(null);
 
   const credits = SPECS_DATA.credits || [];
   const modelOptions = MODEL_OPTIONS;
   const activeModel = modelOptions[selectedModel];
-  const activeImage =
-    selectedModel === 'model3' && !showGlasses && activeModel.glassesOffImage
-      ? activeModel.glassesOffImage
-      : activeModel.image;
 
   return (
     <section
@@ -273,7 +266,7 @@ export const SpecsSection: React.FC = () => {
                 <div className="relative z-10 w-full max-w-[360px] sm:max-w-[420px] h-[460px] sm:h-[520px] flex items-center justify-center overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={`${activeModel.id}-${selectedModel === 'model3' ? showGlasses : 'default'}`}
+                      key={activeModel.id}
                       initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.96 }}
@@ -281,7 +274,7 @@ export const SpecsSection: React.FC = () => {
                       className="w-full h-full flex items-center justify-center"
                     >
                       <motion.img
-                        src={activeImage}
+                        src={activeModel.image}
                         alt={`Mô hình Suri Mukeki ${activeModel.label}`}
                         className={`w-full h-full object-contain drop-shadow-[0_16px_32px_rgba(49,93,156,0.18)] select-none pointer-events-none transition-transform duration-300 ${activeModel.scaleClass || 'scale-100'}`}
                         animate={{ y: [0, -5, 0] }}
@@ -290,19 +283,6 @@ export const SpecsSection: React.FC = () => {
                     </motion.div>
                   </AnimatePresence>
                 </div>
-
-                {/* Optional Model 3.0 Glasses Variant Toggle */}
-                {selectedModel === 'model3' && (
-                  <div className="relative z-10 mt-3 flex justify-center">
-                    <button
-                      type="button"
-                      onClick={() => setShowGlasses((prev) => !prev)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-sans text-xs font-semibold bg-white/90 dark:bg-[#141517] border border-[#292D3A]/15 dark:border-white/10 hover:border-[#315D9C] dark:hover:border-[#79ACE0] text-[#292D3A] dark:text-[#ECEBE6] transition-colors cursor-pointer shadow-xs"
-                    >
-                      <span>👓 {showGlasses ? 'Tháo kính mắt' : 'Đeo kính lại'}</span>
-                    </button>
-                  </div>
-                )}
 
               </div>
 
@@ -384,7 +364,6 @@ export const SpecsSection: React.FC = () => {
                     ))}
                   </div>
                 </div>
-
               </div>
 
             </div>

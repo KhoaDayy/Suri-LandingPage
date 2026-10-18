@@ -641,11 +641,6 @@ export const MODEL_SPECS_CREDITS_CONTENT: ModelSpecsCreditsData = {
       notes: 'Minh họa (kcomorebi) và rigging (Truong Thanh Tan) phiên bản debut ra mắt ngày 17/04/2021.',
     },
   ],
-  glassesToggle: {
-    withGlasses: '/images/suri/model-fullbody.webp',
-    noGlasses: '/images/characters/suri_model3_noglasses.webp',
-    label: 'Chuyển đổi biểu cảm Model 3.0',
-  },
   costumeSheet: {
     image: '/images/suri/model-costume-sheet.webp',
     title: 'Bản vẽ chi tiết trang phục & chất liệu',
@@ -1147,7 +1142,6 @@ export const SURI_DATA: CharacterProfile = {
   assets: {
     logo: '/images/icons/logo_suri.png',
     heroCutout: '/images/characters/suri_cutout_transparent.png',
-    heroCutoutNoGlasses: '/images/characters/suri_model3_noglasses.webp',
     daisyCrown: '/images/characters/suri_daisy_crown.png',
     doodleChibi: '/images/gallery/suri_doodle_color.png',
     costumeSheet: '/images/gallery/costume_detailing_materials.png',

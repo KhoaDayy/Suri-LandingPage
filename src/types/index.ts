@@ -233,7 +233,6 @@ export interface CharacterProfile {
   assets: {
     logo: string;
     heroCutout: string;
-    heroCutoutNoGlasses: string;
     daisyCrown: string;
     doodleChibi: string;
     costumeSheet: string;

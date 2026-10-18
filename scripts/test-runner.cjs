@@ -857,15 +857,13 @@ runner.register(3, 'Cross-Feature', 'T3-CROSS-02', 'Mobile menu drawer toggle st
   assert(hasState, 'Navbar must define mobile menu open/closed state');
 });
 
-runner.register(3, 'Cross-Feature', 'T3-CROSS-03', 'Model 3.0 glasses interactive toggle contract', async () => {
-  const specsFile = resolveProjectFile('src/components/sections/SpecsSection.tsx', 'src/components/sections/HeroSection.tsx');
-  const suriData = loadTsModule('src/data/suriData.ts');
-  const combined = (specsFile?.content || '') + '\n' + JSON.stringify(suriData || {});
+runner.register(3, 'Cross-Feature', 'T3-CROSS-03', 'Zero glasses toggle buttons or state contract', async () => {
+  const specsFile = resolveProjectFile('src/components/sections/SpecsSection.tsx');
+  const heroFile = resolveProjectFile('src/components/sections/HeroSection.tsx');
+  const combined = (specsFile?.content || '') + '\n' + (heroFile?.content || '');
 
-  const hasGlassesOn = /suri_cutout_transparent\.png|suri_model3\.webp/i.test(combined);
-  const hasGlassesOff = /suri_model3_noglasses\.webp/i.test(combined);
-  assert(hasGlassesOn, 'Must reference glasses-on asset');
-  assert(hasGlassesOff, 'Must reference glasses-off asset (suri_model3_noglasses.webp)');
+  const hasGlassesToggle = /tháo kính|đeo kính|glassesToggle|showGlasses|useNoGlasses/i.test(combined);
+  assert(!hasGlassesToggle, 'Must NOT contain glasses toggle buttons, state, or controls in active UI');
 });
 
 runner.register(3, 'Cross-Feature', 'T3-CROSS-04', 'Suri / Irus dual persona toggle contract', async () => {
