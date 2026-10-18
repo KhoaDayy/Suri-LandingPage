@@ -614,7 +614,7 @@ runner.register(1, 'Branding & Metadata', 'T1-BRAND-05', 'Dark liquid-glass foot
   const footerFile = resolveProjectFile('src/components/layout/Footer.tsx', 'src/components/Footer.tsx');
   const suriData = loadTsModule('src/data/suriData.ts');
   const combined = (footerFile?.content || '') + '\n' + JSON.stringify(suriData || {});
-  assertMatch(combined, /#SuriMukeki|#Sureiya|#SuriArt/i, 'Footer or canonical data must define official hashtags');
+  assertMatch(combined, /#SuriMukeki|#Sureiya|#Surillust|#SuriArt/i, 'Footer or canonical data must define official hashtags');
   assertMatch(combined, /youtube|discord|twitter|x\.com/i, 'Footer or canonical data must define community channel links');
 });
 
