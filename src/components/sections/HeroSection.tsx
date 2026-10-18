@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Youtube, MessageSquare, Twitter, ArrowUpRight, Mail } from 'lucide-react';
 import { BlurText } from '../ui/BlurText';
-import { LiquidBadge } from '../ui/LiquidBadge';
 import { WaterParticles } from '../ui/WaterParticles';
 import { HERO_DATA, SURI_DATA } from '../../data/suriData';
 
@@ -61,16 +60,6 @@ export const HeroSection: React.FC = () => {
           {/* Left Column: Official Identity, Tagline, Story & Actions */}
           <div className="lg:col-span-7 flex flex-col items-start z-20">
             
-
-            {/* Live Status Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="mb-3.5 inline-flex items-center gap-2"
-            >
-              <LiquidBadge text="LIVE TRANSMISSION" variant="cyan" />
-            </motion.div>
 
             {/* Grand Display Headline: SURI MUKEKI */}
             <div className="relative select-none w-full">
