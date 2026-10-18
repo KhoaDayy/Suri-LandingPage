@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, Coffee, Glasses, Sparkles, Heart, ChevronDown, Award, Calendar, Users } from 'lucide-react';
+import { Eye, Coffee, Sparkles, Heart, ChevronDown, Award, Calendar, Users } from 'lucide-react';
 import { SURI_DATA } from '../data/suriData';
 
 interface HeroProps {
@@ -7,12 +7,9 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
-  const [useNoGlasses, setUseNoGlasses] = useState<boolean>(false);
   const [showVipModal, setShowVipModal] = useState<boolean>(false);
 
-  const currentCutout = useNoGlasses
-    ? SURI_DATA.assets.heroCutoutNoGlasses
-    : SURI_DATA.assets.heroCutout;
+  const currentCutout = SURI_DATA.assets.heroCutout;
 
   return (
     <section
@@ -76,21 +73,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
             </p>
           </div>
 
-          {/* Interactive Feature Controls: Glasses Toggle & VIP Stats Pill */}
+          {/* Interactive Feature Controls: VIP Stats Pill */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
-            {/* Glasses Toggle */}
-            <button
-              onClick={() => setUseNoGlasses(!useNoGlasses)}
-              className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl border font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 bubble-btn shadow-sm ${
-                useNoGlasses
-                  ? 'bg-berry-50 border-berry-300 text-berry-600 ring-2 ring-berry-200/50'
-                  : 'bg-white border-taro-200 text-chocolate-700 hover:bg-taro-50'
-              }`}
-              title="Chuyển đổi kiểu mắt kính của Model 3.0"
-            >
-              <Glasses size={16} className={useNoGlasses ? 'text-berry-500' : 'text-taro-600'} />
-              <span>{useNoGlasses ? 'Mắt Biếc Không Kính 🌸' : 'Kính Gọng Tri Thức 👓'}</span>
-            </button>
 
             {/* Quick VIP Card Drawer Trigger */}
             <button
@@ -154,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
             {/* Subtitle Caption */}
             <div className="mt-2 text-center">
               <span className="text-[11px] font-display font-bold tracking-wider text-chocolate-500 uppercase bg-white/90 px-4 py-1.5 rounded-full border border-taro-200 shadow-xs">
-                {useNoGlasses ? 'Tạo hình tháo kính mắt' : 'Tạo hình đeo kính trí thức tiêu chuẩn'}
+                Tạo hình Model 3.0 chính thức
               </span>
             </div>
           </div>
