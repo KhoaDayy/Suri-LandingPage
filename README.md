@@ -78,7 +78,7 @@ The **Suri Mukeki Showcase** serves as both an official fan tribute portfolio an
 
 1. **Cinematic Hero Presentation**: A hero introduction with dynamic badge telemetry, staggered typography reveals, character cutouts, and fast-action social links.
 2. **Interactive Lore & Chronicle Codex**: An editorial story section documenting Suri's genesis as a reincarnated water slime, the enigmatic letter from "W", the 300-year lightning seal on her alter persona *Irus*, and her sovereign rebirth.
-3. **Model Evolution Deck & 3D Showcase**: Technical telemetry and model evolution inspector covering her 3D Cel-shaded model (debuted Sept 2026), Chibi Suwi, Model 3.0 Live2D (with glasses toggle), Model 2.0, and Genesis Model 1.0.
+3. **Model Evolution Deck & 3D Showcase**: Technical telemetry and model evolution inspector covering her 3D Cel-shaded model (debuted Sept 2026), Chibi Suwi, Model 3.0 Live2D, Model 2.0, and Genesis Model 1.0.
 4. **Broadcast Schedule & Music Sessions**: Real-time weekly stream routine matrix alongside a verified YouTube cover songs catalog featuring an accessible modal video player.
 5. **Contact Card & Social Network Hub**: Direct contact card integrating official channels (YouTube, Facebook, Twitter/X, Discord, TikTok, and direct business email with clipboard copy resilience).
 

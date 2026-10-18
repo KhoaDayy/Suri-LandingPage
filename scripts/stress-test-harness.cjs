@@ -7,7 +7,7 @@
  *
  * Verifies live in Headless Chrome:
  * 1. Persona switcher lifecycle (Suri water slime vs. Irus lightning monarch)
- * 2. Model 3.0 glasses toggle lifecycle (suri_model3.webp vs. suri_model3_noglasses.webp)
+ * 2. Model evolution lineage & zero-glasses toggle verification
  * 3. Video modal complete lifecycle (open, embed url, ESC key, backdrop, scroll lock/restore)
  * 4. Mobile navigation drawer lifecycle (open, link auto-close, ESC key, scroll lock/restore)
  * 5. Full keyboard accessibility audit (Tab reachability, accessible names, Enter/Space activation)
@@ -293,16 +293,16 @@ class StressTestHarness {
       }
 
       // ----------------------------------------------------------------------
-      // SUITE 2: MODEL 3.0 GLASSES TOGGLE STRESS TESTS
+      // SUITE 2: MODEL EVOLUTION & SPECS STRESS TESTS
       // ----------------------------------------------------------------------
-      console.log(`\n${colors.bold}${colors.magenta}▶ SUITE 2: Model 3.0 Glasses Toggle Stress Tests${colors.reset}`);
+      console.log(`\n${colors.bold}${colors.magenta}▶ SUITE 2: Model Evolution & Specifications Stress Tests${colors.reset}`);
 
-      // Test 2.1: Initial Glasses ON Verification
+      // Test 2.1: Model specs section renders active model image
       try {
         const state = await this.eval(`(() => {
           const specsSection = document.getElementById('specs');
           if (!specsSection) return { error: 'Specs section not found' };
-          const img = specsSection.querySelector('img[alt*="Model 3.0"]');
+          const img = specsSection.querySelector('img[alt*="Mô hình Suri Mukeki"]');
           return {
             hasImage: !!img,
             src: img ? img.src : '',
@@ -310,83 +310,63 @@ class StressTestHarness {
           };
         })()`);
         if (state.error) throw new Error(state.error);
-        if (!state.src.includes('suri_model3.webp') || state.src.includes('noglasses')) {
-          throw new Error(`Expected glasses-on asset suri_model3.webp, got ${state.src}`);
+        if (!state.hasImage) {
+          throw new Error('Expected active model image in specs section');
         }
-        this.logPass('T5-SPECS-01: Model 3.0 initial state renders glasses active (suri_model3.webp)', `alt: "${state.alt}"`);
+        this.logPass('T5-SPECS-01: Specs section correctly renders active model visual', `alt: "${state.alt}"`);
       } catch (err) {
-        this.logFail('T5-SPECS-01: Initial glasses state', err.message);
+        this.logFail('T5-SPECS-01: Specs visual rendering', err.message);
       }
 
-      // Test 2.2: Toggle Glasses OFF Verification
+      // Test 2.2: Strict negative assertion - NO glasses toggle button exists
       try {
-        const state = await this.eval(`(async () => {
+        const check = await this.eval(`(() => {
           const specsSection = document.getElementById('specs');
-          const toggleBtn = Array.from(specsSection.querySelectorAll('button')).find(b => b.textContent.includes('Toggle Glasses'));
-          if (!toggleBtn) return { error: 'Glasses toggle button not found' };
-          toggleBtn.click();
-          await new Promise(r => setTimeout(r, 450));
-          const img = specsSection.querySelector('img[alt*="Model 3.0"]');
+          if (!specsSection) return { error: 'Specs section not found' };
+          const buttons = Array.from(specsSection.querySelectorAll('button'));
+          const glassesBtn = buttons.find(b => /kính|glasses/i.test(b.textContent || ''));
           return {
-            src: img ? img.src : '',
-            alt: img ? img.alt : '',
-            btnText: toggleBtn.textContent.trim()
+            hasGlassesButton: !!glassesBtn,
+            foundText: glassesBtn ? glassesBtn.textContent.trim() : null
           };
         })()`);
-        if (state.error) throw new Error(state.error);
-        if (!state.src.includes('suri_model3_noglasses.webp')) {
-          throw new Error(`Expected noglasses asset suri_model3_noglasses.webp, got ${state.src}`);
+        if (check.error) throw new Error(check.error);
+        if (check.hasGlassesButton) {
+          throw new Error(`Glasses toggle button must NOT exist, found: "${check.foundText}"`);
         }
-        if (!state.alt.includes('without Glasses')) {
-          throw new Error(`Expected alt text reflecting no glasses, got "${state.alt}"`);
-        }
-        this.logPass('T5-SPECS-02: Glasses toggle correctly swaps image to suri_model3_noglasses.webp', `btnText: "${state.btnText}"`);
+        this.logPass('T5-SPECS-02: Zero glasses toggle button invariant confirmed', 'no glasses UI elements found');
       } catch (err) {
-        this.logFail('T5-SPECS-02: Toggle glasses OFF', err.message);
+        this.logFail('T5-SPECS-02: Zero glasses toggle button invariant', err.message);
       }
 
-      // Test 2.3: Rapid Toggle Stress Test (30 cycles)
+      // Test 2.3: Model Evolution Tab Switching Stress Test
       try {
-        const stress = await this.eval(`(async () => {
+        const switchResult = await this.eval(`(async () => {
           const specsSection = document.getElementById('specs');
-          const toggleBtn = Array.from(specsSection.querySelectorAll('button')).find(b => b.textContent.includes('Toggle Glasses'));
-          if (!toggleBtn) return { error: 'Toggle button not found' };
+          if (!specsSection) return { error: 'Specs section not found' };
+          const tabs = Array.from(specsSection.querySelectorAll('button[role="tab"]'));
+          if (tabs.length === 0) return { error: 'No model tabs found' };
 
-          // 30 rapid clicks
-          for (let i = 0; i < 30; i++) {
-            toggleBtn.click();
-            await new Promise(r => setTimeout(r, 15));
+          // Rapidly switch between model tabs
+          for (let i = 0; i < 15; i++) {
+            const tab = tabs[i % tabs.length];
+            tab.click();
+            await new Promise(r => setTimeout(r, 20));
           }
 
-          await new Promise(r => setTimeout(r, 400));
-          const img = specsSection.querySelector('img[alt*="Model 3.0"]');
+          // Finally select Model 3D (first tab)
+          tabs[0].click();
+          await new Promise(r => setTimeout(r, 300));
+          const img = specsSection.querySelector('img[alt*="Mô hình Suri Mukeki"]');
           return {
-            src: img ? img.src : '',
-            btnText: toggleBtn.textContent.trim()
+            finalSrc: img ? img.src : '',
+            tabsCount: tabs.length
           };
         })()`);
-        if (stress.error) throw new Error(stress.error);
-        // After 30 clicks starting from OFF, it should end at OFF (original was ON, toggle 1 made OFF, +30 toggles = OFF)
-        if (!stress.src.includes('suri_model3_noglasses.webp')) {
-          throw new Error(`Expected stable noglasses state after 30 clicks, got ${stress.src}`);
-        }
-        // One more click restores ON
-        await this.eval(`(() => {
-          const specsSection = document.getElementById('specs');
-          const toggleBtn = Array.from(specsSection.querySelectorAll('button')).find(b => b.textContent.includes('Toggle Glasses'));
-          toggleBtn.click();
-        })()`);
-        await new Promise(r => setTimeout(r, 400));
-        const finalState = await this.eval(`(() => {
-          const img = document.querySelector('#specs img[alt*="Model 3.0"]');
-          return img ? img.src : '';
-        })()`);
-        if (!finalState.includes('suri_model3.webp') || finalState.includes('noglasses')) {
-          throw new Error(`Expected restoration to suri_model3.webp, got ${finalState}`);
-        }
-        this.logPass('T5-SPECS-03: Model 3.0 glasses toggle survives 30 rapid clicks with exact parity', `restored to ON`);
+        if (switchResult.error) throw new Error(switchResult.error);
+        this.logPass('T5-SPECS-03: Model evolution tabs survive rapid switching without crash', `tabs: ${switchResult.tabsCount}`);
       } catch (err) {
-        this.logFail('T5-SPECS-03: Rapid glasses toggle stress test', err.message);
+        this.logFail('T5-SPECS-03: Model tab switching stress test', err.message);
       }
 
       // ----------------------------------------------------------------------

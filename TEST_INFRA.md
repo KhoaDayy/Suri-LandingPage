@@ -117,7 +117,7 @@ Covers all primary behavioral requirements across the 7 application feature doma
 ### Tier 3: Cross-Feature Combinations & State Transitions (5 Tests)
 - `[T3-CROSS-01]`: **Navigation Anchor Mapping** — Verifies 1:1 bidirectional mapping between navbar links (`#hero`, `#lore`, `#specs`, `#schedule`) and target section element IDs.
 - `[T3-CROSS-02]`: **Mobile Menu Drawer Toggle Contract** — Verifies mobile drawer open/close state machine.
-- `[T3-CROSS-03]`: **Model 3.0 Glasses Interactive Toggle Contract** — Validates state machine switching between glasses-on (`suri_cutout_transparent.png`) and glasses-off (`suri_model3_noglasses.webp`).
+- `[T3-CROSS-03]`: **Zero Glasses Toggle Contract** — Strict negative assertion validating that no glasses toggle buttons, state, or controls exist in the application.
 - `[T3-CROSS-04]`: **Suri / Irus Dual Persona Toggle Contract** — Validates state machine switching between Suri (Water Slime) and Irus (Lightning Monarch `irus_alter_full.webp`).
 - `[T3-CROSS-05]`: **Video Modal Playback Trigger Integration** — Verifies cover cards trigger `VideoModal` with active video ID payload.
 

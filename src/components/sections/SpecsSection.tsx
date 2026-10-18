@@ -4,7 +4,6 @@ import {
   Maximize2,
 } from 'lucide-react';
 import { BlurText } from '../ui/BlurText';
-import { LiquidBadge } from '../ui/LiquidBadge';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { TiltCard } from '../effects/TiltCard';
 import { FloatingSlimeBubbles } from '../effects/FloatingSlimeBubbles';
@@ -292,13 +291,10 @@ export const SpecsSection: React.FC = () => {
                 {/* Main Identity & Description */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <LiquidBadge text={activeModel.badge} variant={activeModel.isCurrentActive ? "cyan" : "amber"} />
-                      <span className="text-xs font-mono text-[#C9A95C] dark:text-[#D4B86A]">
-                        Ra mắt: {activeModel.debutDate}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-[#292D3A]/50 dark:text-[#A1A6B3]/60">{activeModel.year}</span>
+                    <span className="font-sans text-xs text-[#C9A95C] dark:text-[#D4B86A] font-medium">
+                      Ra mắt: {activeModel.debutDate}
+                    </span>
+                    <span className="text-xs font-mono text-[#292D3A]/50 dark:text-[#A1A6B3]/60">{activeModel.year}</span>
                   </div>
 
                   <div>
@@ -338,31 +334,6 @@ export const SpecsSection: React.FC = () => {
                 {/* Platform Note: Warm editorial note */}
                 <div className="pt-3 border-t border-[#292D3A]/10 dark:border-white/[0.08] text-xs font-sans text-[#C9A95C] dark:text-[#D4B86A] font-medium">
                   {activeModel.platformNote}
-                </div>
-
-                {/* Technical Telemetry Specs Strip */}
-                <div className="pt-4 border-t border-[#292D3A]/10 dark:border-white/[0.08] space-y-2">
-                  <span className="font-sans text-xs font-semibold uppercase tracking-wider text-[#292D3A]/60 dark:text-[#7A808E] block">
-                    Thông số kỹ thuật mô hình (Telemetry)
-                  </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                    {SPECS_DATA.specs.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3 rounded-2xl bg-[#F8F7F2] dark:bg-[#141517] border border-[#292D3A]/8 dark:border-white/[0.06]"
-                      >
-                        <div className="font-mono text-xs sm:text-sm font-bold text-[#315D9C] dark:text-[#79ACE0]">
-                          {item.value}
-                        </div>
-                        <div className="font-sans text-[11px] font-semibold text-[#292D3A] dark:text-[#ECEBE6] mt-0.5 truncate">
-                          {item.label}
-                        </div>
-                        <div className="font-sans text-[10px] text-[#292D3A]/65 dark:text-[#7A808E] mt-1 line-clamp-1">
-                          {item.detail}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 

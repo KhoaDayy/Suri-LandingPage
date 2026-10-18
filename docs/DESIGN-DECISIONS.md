@@ -12,7 +12,7 @@ Following user guidance to develop a tailored, high-engagement design for each s
 
 1. **Hero (`Hero.tsx`) — Cinematic Full-Height Showcase**:
    - **Visuals**: Full-screen presentation featuring the transparent master cutout of Suri Model 3.0 with multi-tone pastel auras and floating food stickers (`🍮`, `🦋`, `🌸`, `🍰`).
-   - **Interactivity**: Live **Glasses Toggle** (`👓 Đeo kính tri thức` / `🌸 Mắt biếc không kính`) dynamically swapping character cutouts; **VIP Card Modal** displaying debut statistics, zodiac, height, fanbase, and favorite treats.
+   - **Interactivity**: **VIP Card Modal** displaying debut statistics, zodiac, height, fanbase, and favorite treats; Zoom lightbox on character visuals.
 
 2. **Section 01 (`SacredMotifs.tsx`) — Bento Tasting Menu (Bento Grid)**:
    - **Layout**: Asymmetrical 12-column Bento Grid.

@@ -22,7 +22,7 @@ The website uses high-resolution, uncompressed artwork provided directly from `C
 | `public/images/gallery/suri_art_12.png` | Art Series #12 (from `12.png`) | High-Res PNG (7.3 MB) | Official Artwork Series | **Active & Present (Gallery)** |
 | `public/images/gallery/suri_art_14.png` | Art Series #14 (from `14.png`) | High-Res PNG (7.4 MB) | Official Artwork Series | **Active & Present (Gallery)** |
 | `public/images/gallery/suri_art_8.png` | Art Series #8 (from `8.png`) | High-Res PNG (10.4 MB) | Official Artwork Series | **Active & Present (Gallery)** |
-| `public/images/characters/suri_model3_noglasses.webp` | Suri Model 3.0 Alternative Expression (No Glasses) | Full-body WEBP (506 KB) | Illustrated by **T_blence**, Rigged by **Sophiel** | **Active & Present (Hero Toggle)** |
+| `public/images/characters/suri_model3_noglasses.webp` | Suri Model 3.0 Reveal Art Variant | Full-body WEBP (506 KB) | Illustrated by **T_blence**, Rigged by **Sophiel** | **Archival / Gallery Art** |
 | `public/images/characters/irus_alter_full.webp` | Irus (Suri Alter) Full-Body Standing Pose — Lightning Monarch | Full-body WEBP (126 KB) | Official Broadcast Persona Asset (`2021/10/12`) | **Active & Present (Gallery & Story)** |
 | `public/images/gallery/irus_reference_sheet.webp` | Irus Model Specification & Turnaround Sheet | Design sheet WEBP (549 KB) | Official Model Reference Sheet | **Active & Present (Gallery)** |
 | `public/images/characters/suri_model2.webp` | Suri Mukeki Generation 2.0 Full-Body Model | Full-body WEBP (427 KB) | Illustrated by **Turbulence** (`2022/05/25`) | **Active & Present** |
