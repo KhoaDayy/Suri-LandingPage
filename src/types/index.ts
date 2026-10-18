@@ -13,6 +13,7 @@ export interface NavLink {
   href: string;
   icon?: string;
   badge?: string;
+  jpLabel?: string;
 }
 
 export interface SocialLink {
@@ -105,6 +106,7 @@ export interface LoreProfileData {
   quote?: string;
   irusAsset?: string;
   suriAsset?: string;
+  wingwingAsset?: string;
 }
 
 // ============================================================================
@@ -150,6 +152,11 @@ export interface ModelSpecsCreditsData {
     title: string;
     description: string;
   };
+  expressionSheet?: {
+    image: string;
+    title: string;
+    description: string;
+  };
 }
 
 // ============================================================================
@@ -175,15 +182,19 @@ export interface MusicCoverShowcase {
   description: string;
   releaseDate?: string;
   originalArtist?: string;
+  category?: string;
 }
 
 export interface ScheduleHighlightsData {
   sectionTag: string;
   headline: string;
   timezone: string;
+  generalNotice?: string;
+  typicalHour?: string;
   schedule: StreamRoutineItem[];
   routine?: StreamRoutineItem[];
   covers: MusicCoverShowcase[];
+  playlistUrl?: string;
 }
 
 // ============================================================================
@@ -236,9 +247,10 @@ export interface CharacterProfile {
     youtube: string;
     twitter: string;
     discord: string;
-    carrd: string;
+    carrd?: string;
     marshmallow: string;
     facebook: string;
+    tiktok?: string;
   };
 }
 

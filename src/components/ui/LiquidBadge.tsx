@@ -82,7 +82,7 @@ export const LiquidBadge: React.FC<LiquidBadgeProps> = ({
   return (
     <span
       className={`
-        liquid-glass inline-flex items-center rounded-full font-mono font-medium uppercase
+        liquid-glass inline-flex items-center rounded-full font-sans font-medium uppercase
         border ${v.border} ${v.bg} ${v.text} ${s.badge} ${s.text}
         shadow-[0_0_12px_rgba(0,0,0,0.5)] transition-all duration-300
         ${className}

@@ -4,13 +4,23 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #FAFAF7;
+  color: #1E232F;
 }
 
-html, body {
-  background: #000;
-  color: #fff;
-  font-family: 'Barlow', sans-serif;
+html.dark {
+  background-color: #141517;
+  color: #ECEBE6;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  background-color: inherit;
+  color: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ==========================================================================
@@ -82,118 +92,291 @@ html, body {
 }
 
 /* ==========================================================================
-   Candy Pop Anime × Japanese Motion Graphics Design System
+   Deliberate Semantic Color Token Architecture
    ========================================================================== */
 
-/* Halftone Texture */
-.bg-halftone-subtle {
-  background-image: radial-gradient(#282436 12%, transparent 13%);
-  background-size: 14px 14px;
-}
-.bg-halftone-pink {
-  background-image: radial-gradient(#FF79AC 18%, transparent 19%);
-  background-size: 16px 16px;
-}
-.bg-halftone-cyan {
-  background-image: radial-gradient(#65E4E0 18%, transparent 19%);
-  background-size: 16px 16px;
+:root {
+  /* Page Canvas & Surface Luminance System */
+  --theme-bg: #FAFAF7;
+  --theme-surface: #FFFFFF;
+  --theme-surface-raised: #F4F3EE;
+  --theme-surface-sunken: #EFEFEA;
+  --theme-surface-elevated: #EDECE6;
+
+  /* Typography System */
+  --theme-text-primary: #1E232F;
+  --theme-text-secondary: #585E6E;
+  --theme-text-muted: #7E8594;
+
+  /* Brand Accents */
+  --theme-accent-brand: #315D9C;
+  --theme-accent-brand-soft: rgba(49, 93, 156, 0.08);
+  --theme-accent-gold: #C9A95C;
+  --theme-accent-gold-soft: rgba(201, 169, 92, 0.12);
+  --theme-accent-violet: #7660A7;
+
+  /* Understated Hairline Borders */
+  --theme-border: rgba(41, 45, 58, 0.10);
+  --theme-border-medium: rgba(41, 45, 58, 0.18);
+  --theme-border-strong: rgba(41, 45, 58, 0.28);
+
+  /* Legacy variable aliases for backward compatibility */
+  --page-bg: #FAFAF7;
+  --paper-white: #FFFFFF;
+  --paper-ivory: #F8F7F2;
+  --paper-blue: #EAF3FB;
+  --ink: #292D3A;
+  --ink-secondary: #555B6C;
+  --ink-muted: #858B98;
+  --suri-blue: #75B8E6;
+  --suri-cyan: #70D7E1;
+  --suri-deep-blue: #315D9C;
+  --suri-lavender: #A8A4DC;
+  --accent-gold: #C9A95C;
+  --accent-violet: #7660A7;
+  --accent-coral: #CB7188;
+  --line: rgba(43, 48, 61, 0.12);
+  --line-strong: rgba(43, 48, 61, 0.22);
+  --shadow-soft: 0 8px 28px rgba(36, 48, 70, 0.08);
+
+  --content-max: 1140px;
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 14px;
+
+  /* Editorial motion curves & timings */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-hover: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-hover: 200ms;
+  --duration-entrance: 450ms;
 }
 
-/* Checkerboard Borders & Accent Strips */
-.bg-checker-mini {
-  background-image: 
-    linear-gradient(45deg, #282436 25%, transparent 25%), 
-    linear-gradient(-45deg, #282436 25%, transparent 25%), 
-    linear-gradient(45deg, transparent 75%, #282436 75%), 
-    linear-gradient(-45deg, transparent 75%, #282436 75%);
-  background-size: 12px 12px;
-  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+.dark {
+  /* Charcoal Surface Luminance Ladder (deliberate depth without pure black) */
+  --theme-bg: #141517;              /* Deep warm charcoal page canvas */
+  --theme-surface: #1B1D21;         /* Level 1: Primary cards, panels, fixed navbar */
+  --theme-surface-raised: #22252B;  /* Level 2: Inset boxes, active selectors, secondary badges */
+  --theme-surface-sunken: #18191D;  /* Sunken wells, search wells */
+  --theme-surface-elevated: #2A2E36;/* Level 3: Modals, dropdown menus, focused pills */
+
+  /* Typography System (warm neutral off-white & muted gray) */
+  --theme-text-primary: #ECEBE6;    /* Warm off-white, calm on the eyes, avoids glare */
+  --theme-text-secondary: #A1A6B3;  /* Muted neutral gray, WCAG AAA compliant */
+  --theme-text-muted: #7A808E;      /* Muted metadata & caption stamp text */
+
+  /* Brand Accents adapted for dark surfaces without artificial neon */
+  --theme-accent-brand: #79ACE0;    /* Refined celestial blue, authentic Suri identity */
+  --theme-accent-brand-soft: rgba(121, 172, 224, 0.12);
+  --theme-accent-gold: #D4B86A;     /* Warm golden brass, high contrast on dark */
+  --theme-accent-gold-soft: rgba(212, 184, 106, 0.14);
+  --theme-accent-violet: #A593D1;   /* Dignified soft lavender for Irus persona */
+
+  /* Understated Hairline Borders */
+  --theme-border: rgba(236, 235, 230, 0.09);
+  --theme-border-medium: rgba(236, 235, 230, 0.16);
+  --theme-border-strong: rgba(236, 235, 230, 0.28);
+
+  /* Legacy variable overrides in dark mode */
+  --page-bg: #141517;
+  --paper-white: #1B1D21;
+  --paper-ivory: #22252B;
+  --paper-blue: #1A222C;
+  --ink: #ECEBE6;
+  --ink-secondary: #A1A6B3;
+  --ink-muted: #7A808E;
+  --suri-blue: #79ACE0;
+  --suri-cyan: #79ACE0;
+  --suri-deep-blue: #2A5288;
+  --suri-lavender: #A593D1;
+  --accent-gold: #D4B86A;
+  --accent-violet: #A593D1;
+  --accent-coral: #D9839A;
+  --line: rgba(236, 235, 230, 0.09);
+  --line-strong: rgba(236, 235, 230, 0.18);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Diagonal Courier Tape */
-.bg-stripes-courier {
-  background: repeating-linear-gradient(
-    -45deg,
-    #FFE36E,
-    #FFE36E 10px,
-    #282436 10px,
-    #282436 20px
+/* Subtle fantasy celestial aura */
+.bg-celestial-wave {
+  background-image: radial-gradient(circle at 50% 0%, rgba(117, 184, 230, 0.12) 0%, transparent 65%);
+}
+
+.dark .bg-celestial-wave {
+  background-image: radial-gradient(circle at 50% 0%, rgba(121, 172, 224, 0.08) 0%, transparent 65%);
+}
+
+.bg-water-ripple {
+  background-image: radial-gradient(circle at 100% 100%, rgba(112, 215, 225, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 0%, rgba(168, 164, 220, 0.06) 0%, transparent 50%);
+}
+
+.dark .bg-water-ripple {
+  background-image: radial-gradient(circle at 100% 100%, rgba(121, 172, 224, 0.06) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 0%, rgba(165, 147, 209, 0.05) 0%, transparent 50%);
+}
+
+/* Elegant Editorial Portal Card */
+.portal-card {
+  background: var(--theme-surface, #FFFFFF);
+  border: 1px solid var(--theme-border, rgba(43, 48, 61, 0.12));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-card:hover {
+  transform: translateY(-1.5px);
+  border-color: var(--theme-accent-brand, rgba(117, 184, 230, 0.45));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dark .portal-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.dark .portal-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
+}
+
+/* Editorial Image Zoom within clipping overflow */
+.img-zoom-editorial {
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.group:hover .img-zoom-editorial {
+  transform: scale(1.025);
+}
+
+/* Editorial micro-lift for interactive buttons and pills */
+.btn-editorial-hover {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-editorial-hover:hover {
+  transform: translateY(-1px);
+}
+
+.btn-editorial-hover:active {
+  transform: translateY(0);
+}
+
+/* Subtle Shimmer Sheen effect on card hover */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0) 70%,
+    transparent 100%
   );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
 }
 
-/* Kinetic Outline Typography */
-.text-stroke-ink {
-  -webkit-text-stroke: 2px #282436;
-}
-.text-stroke-thick {
-  -webkit-text-stroke: 3px #282436;
-}
-.text-stroke-white {
-  -webkit-text-stroke: 2px #FFF5EE;
-}
-.text-stroke-pink {
-  -webkit-text-stroke: 2px #FF79AC;
-}
-.text-stroke-cyan {
-  -webkit-text-stroke: 2px #65E4E0;
+.card-shimmer:hover::after {
+  opacity: 1;
+  animation: shimmer-swipe 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Marquee / Kinetic Ticker Ribbons */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marquee-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 22s linear infinite;
-}
-
-.animate-marquee-fast {
-  display: flex;
-  width: max-content;
-  animation: marquee 14s linear infinite;
-}
-
-.animate-marquee-reverse {
-  display: flex;
-  width: max-content;
-  animation: marquee-reverse 22s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-marquee-fast,
-  .animate-marquee-reverse {
-    animation: none;
-    transform: none;
+@keyframes shimmer-swipe {
+  0% {
+    left: -60%;
+  }
+  100% {
+    left: 140%;
   }
 }
 
-/* Neo-Pop Offset Box Shadows & Stickers */
-.pop-card {
-  background: #FFF5EE;
-  color: #282436;
-  border: 2px solid #282436;
-  box-shadow: 4px 4px 0px #282436;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.pop-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #282436;
+/* Gentle atmospheric floating */
+@keyframes float-gentle-kf {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
-.pop-badge {
-  display: inline-flex;
+.animate-float-gentle {
+  animation: float-gentle-kf 5s ease-in-out infinite;
+}
+
+/* Atmospheric aura breathing pulse */
+@keyframes aura-pulse-kf {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+
+.animate-aura-pulse {
+  animation: aura-pulse-kf 7s ease-in-out infinite;
+}
+
+/* Thin ornamental divider */
+.ornament-divider {
+  display: flex;
   align-items: center;
-  font-weight: 700;
-  border: 2px solid #282436;
-  box-shadow: 2px 2px 0px #282436;
+  gap: 1rem;
 }
 
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(43, 48, 61, 0.15), transparent);
+}
+
+.dark .ornament-divider::before,
+.dark .ornament-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(236, 235, 230, 0.12), transparent);
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #315D9C;
+  outline-offset: 2px;
+}
+
+.dark :focus-visible {
+  outline: 2px solid #79ACE0;
+  outline-offset: 2px;
+}

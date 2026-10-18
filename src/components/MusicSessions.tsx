@@ -30,7 +30,7 @@ export const MusicSessions: React.FC<MusicSessionsProps> = ({ onPlayCover }) => 
             VINYL <span className="text-transparent bg-clip-text bg-gradient-to-r from-berry-500 to-taro-500">JUKEBOX</span>
           </h2>
           <p className="font-sans text-sm sm:text-base text-chocolate-600 max-w-2xl mx-auto">
-            Thưởng thức giai điệu cover ngọt ngào qua máy quay đĩa than tiệm cafe — nhấp vào bất kỳ bài hát nào để nghe và xem món thức uống đi kèm!
+            Thưởng thức các bản nhạc cover từ quán cafe. Chọn bất kỳ bài hát nào để nghe và xem món thức uống đi kèm.
           </p>
         </div>
 

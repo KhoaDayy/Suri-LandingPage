@@ -29,16 +29,16 @@ export const BlurText: React.FC<BlurTextProps> = ({ text, className = '', style 
         <motion.span
           key={index}
           style={{ display: 'inline-block', marginRight: '0.28em' }}
-          initial={{ filter: 'blur(10px)', opacity: 0, y: 50 }}
+          initial={{ filter: 'blur(4px)', opacity: 0, y: 12 }}
           animate={
             isInView
               ? { filter: 'blur(0px)', opacity: 1, y: 0 }
-              : { filter: 'blur(10px)', opacity: 0, y: 50 }
+              : { filter: 'blur(4px)', opacity: 0, y: 12 }
           }
           transition={{
-            duration: 0.7,
-            delay: index * 0.1,
-            ease: [0.16, 1, 0.3, 1],
+            duration: 0.48,
+            delay: index * 0.06,
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
           {word}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
+<html lang="vi" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Suri Mukeki — VTuber Showcase | Sứ Giả Thiên Thần Dị Giới</title>
+    <title>Suri Mukeki (無敵スリ) | Trang Thông Tin & Hồ Sơ VTuber Chính Thức</title>
 
     <!-- Favicon & Brand Icons -->
     <link rel="icon" type="image/png" href="/images/icons/logo_suri.png" />
@@ -12,11 +12,11 @@
     <!-- Meta Description & SEO -->
     <meta
       name="description"
-      content="Suri Mukeki (無敵・スリ) — Independent Virtual YouTuber, Celestial Cyber-Courier & Reincarnated Water Slime. Explore Model 3.0 telemetry, weekly stream broadcast matrix, music covers, and classified lore dossiers."
+      content="Suri Mukeki (無敵・スリ) - VTuber độc lập tại Việt Nam, chuyển sinh từ slime nước. Giới thiệu các mô hình nhân vật, đội ngũ thực hiện, lịch phát sóng và âm nhạc."
     />
     <meta
       name="keywords"
-      content="Suri Mukeki, Suwi, VTuber, Virtual YouTuber, Sureiya, Slayer, Live2D, 3D Model, Irus, Cyber Courier, Reincarnation, Water Slime, Anime, Music Covers"
+      content="Suri Mukeki, Suwi, VTuber, Virtual YouTuber, Sureiya, Slayer, Live2D, 3D Model, Irus, Cyber Courier, Reincarnation, Slime nước, Anime, Music Covers"
     />
     <meta name="author" content="Suri Mukeki // Sureiya Community" />
     <meta name="theme-color" content="#000000" />
@@ -25,14 +25,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://surimukeki.com/" />
-    <meta property="og:site_name" content="Suri Mukeki Official Showcase" />
+    <meta property="og:site_name" content="Suri Mukeki Official" />
     <meta
       property="og:title"
-      content="Suri Mukeki — VTuber Showcase | Sứ Giả Thiên Thần Dị Giới"
+      content="Suri Mukeki (無敵スリ) | Trang Thông Tin & Hồ Sơ VTuber Chính Thức"
     />
     <meta
       property="og:description"
-      content="Official showcase of Suri Mukeki (無敵・スリ) — Celestial Cyber-Courier, Reincarnated Water Slime & Lightning Alter Irus. Explore model telemetry, lore dossiers, and weekly streams."
+      content="Trang thông tin chính thức của Suri Mukeki (無敵・スリ), VTuber độc lập tại Việt Nam, chuyển sinh từ slime nước."
     />
     <meta property="og:image" content="/images/characters/suri_art_25.png" />
     <meta property="og:image:width" content="1200" />
@@ -45,23 +45,47 @@
     <meta name="twitter:creator" content="@SuriMukeki" />
     <meta
       name="twitter:title"
-      content="Suri Mukeki — VTuber Showcase | Sứ Giả Thiên Thần Dị Giới"
+      content="Suri Mukeki (無敵スリ) | Trang Thông Tin & Hồ Sơ VTuber Chính Thức"
     />
     <meta
       name="twitter:description"
-      content="Official showcase of Suri Mukeki (無敵・スリ) — Celestial Cyber-Courier, Reincarnated Water Slime & Lightning Alter Irus."
+      content="Trang thông tin chính thức của Suri Mukeki (無敵・スリ), VTuber độc lập tại Việt Nam, chuyển sinh từ slime nước."
     />
     <meta name="twitter:image" content="/images/characters/suri_art_25.png" />
 
-    <!-- Google Fonts: Dela Gothic One, Syne, Plus Jakarta Sans, Instrument Serif, Barlow -->
+    <!-- Google Fonts: Nunito (Headings & Display), Outfit (Brand & Accents), Be Vietnam Pro (Body, Lore, UI, Metadata) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Dela+Gothic+One&family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Immediate Theme Sync (Prevents Flash of Incorrect Theme) -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('suri-theme');
+          var theme =
+            stored === 'dark' || stored === 'light'
+              ? stored
+              : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'dark';
+          var root = document.documentElement;
+          if (theme === 'dark') {
+            root.classList.add('dark');
+            root.classList.remove('light');
+          } else {
+            root.classList.remove('dark');
+            root.classList.add('light');
+          }
+          root.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-black text-white font-body selection:bg-white selection:text-black">
+  <!-- Cinematic aesthetic fallback: bg-black text-white -->
+  <body class="font-body selection:bg-[#315D9C]/20 selection:text-[#315D9C] bg-[#FAFAF7] dark:bg-[#141517] text-[#1E232F] dark:text-[#ECEBE6] transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

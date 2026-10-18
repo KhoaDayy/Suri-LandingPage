@@ -18,6 +18,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 }) => {
   const activeVideo = video || cover || null;
 
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -30,6 +32,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
   useEffect(() => {
     if (!isOpen) return;
 
+    closeButtonRef.current?.focus();
     window.addEventListener('keydown', handleKeyDown);
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -52,41 +55,42 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         onClick={onClose}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 16 }}
+          initial={{ opacity: 0, scale: 0.98, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.94, y: 16 }}
-          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-          className="liquid-glass-strong relative w-full max-w-4xl overflow-hidden rounded-2xl md:rounded-3xl border border-white/15 bg-black/90 shadow-2xl"
+          exit={{ opacity: 0, scale: 0.98, y: 10 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="liquid-glass-strong relative w-full max-w-4xl overflow-hidden rounded-2xl md:rounded-3xl border border-white/15 dark:border-white/[0.08] bg-black/90 dark:bg-[#1B1D21] shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <header className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 md:px-6 md:py-4">
+          <header className="flex items-center justify-between border-b border-white/10 dark:border-white/[0.08] px-5 py-3.5 md:px-6 md:py-4 bg-black/40 dark:bg-[#141517]">
             <div className="flex items-center gap-3 min-w-0 pr-4">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#79ACE0]/15 text-[#79ACE0] border border-[#79ACE0]/30">
                 <Music size={18} />
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <h3 className="truncate font-heading italic text-lg md:text-xl text-white font-semibold tracking-tight">
+                  <h3 className="truncate font-heading text-lg md:text-xl text-white dark:text-[#ECEBE6] font-semibold tracking-tight">
                     {activeVideo.title}
                   </h3>
                   {activeVideo.badge && (
-                    <span className="shrink-0 rounded-full bg-cyan-500/15 border border-cyan-500/30 px-2 py-0.5 text-[10px] font-mono font-medium text-cyan-300 uppercase">
+                    <span className="shrink-0 rounded-full bg-[#79ACE0]/15 border border-[#79ACE0]/30 px-2 py-0.5 text-[10px] font-sans font-medium text-[#79ACE0] uppercase">
                       {activeVideo.badge}
                     </span>
                   )}
                 </div>
-                <p className="truncate text-xs font-mono text-white/60 mt-0.5">
-                  Original: {activeVideo.originalArtist || activeVideo.artist || 'Kanaria'} • Performed by Suri Mukeki
+                <p className="truncate text-xs font-sans text-white/60 dark:text-[#A1A6B3] mt-0.5">
+                  Bản gốc: {activeVideo.originalArtist || activeVideo.artist || 'Kanaria'} • Trình bày: Suri Mukeki
                 </p>
               </div>
             </div>
 
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={onClose}
-              aria-label="Close modal"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              aria-label="Đóng cửa sổ"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 dark:border-white/[0.08] bg-white/5 dark:bg-white/[0.05] text-white/70 dark:text-[#A1A6B3] hover:bg-white/10 hover:text-white dark:hover:text-[#ECEBE6] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#79ACE0]"
             >
               <X size={18} />
             </button>
@@ -104,12 +108,12 @@ export const VideoModal: React.FC<VideoModalProps> = ({
           </div>
 
           {/* Footer Info */}
-          <footer className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-white/10 px-5 py-3 md:px-6 md:py-3.5 bg-black/60 text-xs font-mono text-white/60">
+          <footer className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-white/10 dark:border-white/[0.08] px-5 py-3 md:px-6 md:py-3.5 bg-black/60 dark:bg-[#141517] text-xs font-sans text-white/60 dark:text-[#A1A6B3]">
             <div className="flex items-center gap-2">
               {activeVideo.sweetDrink && (
-                <span className="flex items-center gap-1.5 text-amber-300 font-sans text-xs">
+                <span className="flex items-center gap-1.5 text-[#D4B86A] font-sans text-xs">
                   <Sparkles size={13} className="shrink-0" />
-                  Pairing: {activeVideo.sweetDrink}
+                  Đồ uống kèm theo: {activeVideo.sweetDrink}
                 </span>
               )}
             </div>
@@ -119,13 +123,13 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                 href={`https://www.youtube.com/watch?v=${activeVideo.youtubeId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                className="inline-flex items-center gap-1.5 text-[#79ACE0] hover:text-[#9EC5EB] transition-colors font-medium font-sans"
               >
-                <span>Watch on YouTube</span>
+                <span>Xem trên YouTube</span>
                 <ExternalLink size={13} />
               </a>
-              <span className="hidden sm:inline text-white/40">|</span>
-              <span className="text-[11px] text-white/40 tracking-wider">PRESS ESC TO CLOSE</span>
+              <span className="hidden sm:inline text-white/40 dark:text-[#7A808E]">|</span>
+              <span className="text-[11px] text-white/40 dark:text-[#7A808E] font-sans">Nhấn ESC để đóng</span>
             </div>
           </footer>
         </motion.div>

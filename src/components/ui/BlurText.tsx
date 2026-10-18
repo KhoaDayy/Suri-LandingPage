@@ -16,8 +16,8 @@ export const BlurText: React.FC<BlurTextProps> = ({
   className = '',
   style,
   align = 'center',
-  delay = 0.08,
-  duration = 0.7,
+  delay = 0.06,
+  duration = 0.48,
   as: Component = 'div',
 }) => {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -58,7 +58,7 @@ export const BlurText: React.FC<BlurTextProps> = ({
           initial={
             shouldReduceMotion
               ? { opacity: 0 }
-              : { filter: 'blur(10px)', opacity: 0, y: 35 }
+              : { filter: 'blur(4px)', opacity: 0, y: 12 }
           }
           animate={
             isInView
@@ -67,12 +67,12 @@ export const BlurText: React.FC<BlurTextProps> = ({
                 : { filter: 'blur(0px)', opacity: 1, y: 0 }
               : shouldReduceMotion
                 ? { opacity: 0 }
-                : { filter: 'blur(10px)', opacity: 0, y: 35 }
+                : { filter: 'blur(4px)', opacity: 0, y: 12 }
           }
           transition={{
             duration,
             delay: index * delay,
-            ease: [0.16, 1, 0.3, 1],
+            ease: [0.22, 1, 0.36, 1],
           }}
         >
           {word}

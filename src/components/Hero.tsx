@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenArtPreview }) => {
               LỜI TÂM TÌNH TỪ CÔ CHỦ TIỆM
             </div>
             <p className="text-chocolate-800 text-base sm:text-lg font-story leading-relaxed italic">
-              “{SURI_DATA.quote}”
+              "{SURI_DATA.quote}"
             </p>
           </div>
 
